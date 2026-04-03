@@ -19,7 +19,7 @@
       background-size: cover;
       background-position: center 40%;
       border-bottom-right-radius: 2rem;
-      overflow: hidden;
+      overflow: visible;
     }
     .search-tab {
       display: flex;
@@ -41,6 +41,12 @@
       border-bottom-color: #2563eb;
     }
     .search-tab:hover:not(.is-active) { color: #334155; }
+    .search-panel { display: none; }
+    .search-panel.is-active { display: block; animation: searchFade .22s ease; }
+    @keyframes searchFade { from { opacity: 0.85; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .hotel-stay-btn.is-active { border-color: #0284c7; background: #fff; color: #0c4a6e; box-shadow: 0 0 0 1px #0ea5e9; }
+    .hotel-stay-panel { display: none; }
+    .hotel-stay-panel.is-active { display: block; animation: searchFade .2s ease; }
     .card-lift { transition: transform .25s ease, box-shadow .25s ease; }
     .card-lift:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(2,132,199,.22); }
     .card-media { position: relative; overflow: hidden; background: #f1f5f9; }
@@ -135,6 +141,87 @@
     @media (min-width: 1024px) { .property-banner { width: 31.5%; } }
     .footer-links a { color: #cbd5e1; transition: color .2s ease; }
     .footer-links a:hover { color: #fff; }
+    .footer-directory-wrap { background: #f8fafc; }
+    .footer-directory .fd-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+    .footer-directory .fd-region {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 1rem;
+      margin-bottom: 0.35rem;
+    }
+    .footer-directory .fd-region:first-of-type { margin-top: 0; }
+    .footer-directory .fd-list { list-style: none; margin: 0; padding: 0; }
+    .footer-directory .fd-list li { margin: 0 0 0.35rem 0; padding: 0; }
+    .footer-directory .fd-list a {
+      color: #64748b;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .footer-directory .fd-list a:hover { color: #0369a1; text-decoration: underline; }
+    .city-stay-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+      padding-right: 2.5rem;
+    }
+    .city-chip {
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #475569;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .city-chip:hover { border-color: #bae6fd; color: #0369a1; }
+    .city-chip.is-active {
+      border-color: #0ea5e9;
+      background: #e0f2fe;
+      color: #0c4a6e;
+    }
+    .star-filter-btn {
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #64748b;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: 0.5rem;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .star-filter-btn.is-active {
+      border-color: #0ea5e9;
+      background: #f0f9ff;
+      color: #0369a1;
+    }
+    .hotel-card-enter { animation: hotelFade .35s ease; }
+    @keyframes hotelFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .deal-card { scroll-snap-align: start; flex-shrink: 0; }
+    @media (min-width: 640px) { .deal-card { width: 48%; min-width: 260px; } }
+    @media (min-width: 1024px) { .deal-card { width: 31.5%; min-width: 0; } }
+    @media (max-width: 639px) { .deal-card { width: 86%; min-width: 260px; } }
+    #flights-activities-promos .promo-wrap::before {
+      background: linear-gradient(to right, rgb(248 250 252) 12%, rgba(248, 250, 252, 0));
+    }
+    #flights-activities-promos .promo-wrap::after {
+      background: linear-gradient(to left, rgb(248 250 252) 12%, rgba(248, 250, 252, 0));
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -142,26 +229,37 @@
     <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2.5 lg:px-6">
       <a href="index.html" class="flex shrink-0 items-center gap-2.5">
         <span class="text-2xl font-black leading-none text-sky-600">∞</span>
-        <div>
-          <p class="text-[1.05rem] font-bold leading-tight tracking-tight text-slate-800">Infinity Routes</p>
-          <div class="mt-0.5 flex gap-0.5">
+        <span class="flex flex-col">
+          <span class="text-[1.05rem] font-bold leading-tight tracking-tight text-slate-800">Infinity Routes</span>
+          <span class="mt-0.5 flex gap-0.5">
             <span class="h-1 w-1 rounded-full bg-rose-400"></span>
             <span class="h-1 w-1 rounded-full bg-amber-400"></span>
             <span class="h-1 w-1 rounded-full bg-emerald-400"></span>
             <span class="h-1 w-1 rounded-full bg-sky-500"></span>
             <span class="h-1 w-1 rounded-full bg-violet-400"></span>
-          </div>
-        </div>
+          </span>
+        </span>
       </a>
+
       <nav class="hidden flex-1 flex-wrap items-center justify-center gap-x-1 gap-y-1 text-[13px] font-semibold text-slate-700 xl:flex">
         <a href="#" class="flex items-center whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Flight + Hotel <span class="ml-1 rounded bg-rose-500 px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none text-white">Bundle &amp; save!</span></a>
         <a href="bangalore.html" class="whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Hotels in Bangalore</a>
-        <a href="#" class="flex items-center whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Transport <span class="ml-1 rounded bg-sky-500 px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none text-white">New!</span></a>
+        <div class="group relative">
+          <button type="button" class="flex items-center whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Transport <span class="ml-1 rounded bg-sky-500 px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none text-white">New!</span> <svg class="ml-0.5 h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="invisible absolute left-0 top-full z-50 mt-1 w-52 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <a href="#" class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50">Flights</a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50">Buses</a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50">Trains</a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50">Airport transfer</a>
+            <a href="#" class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50">Car rentals</a>
+          </div>
+        </div>
         <a href="#" class="whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Activities</a>
         <a href="#" class="whitespace-nowrap rounded-md px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Coupons &amp; Deals</a>
-      </nav>
-      <div class="flex items-center gap-2 sm:gap-3">
         <button type="button" class="hidden rounded-lg border border-sky-500 px-3 py-1.5 text-sm font-semibold text-sky-600 hover:bg-sky-50 md:inline">List your place</button>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
         <div class="hidden items-center gap-1 text-sm font-semibold text-slate-600 sm:flex">
           <span class="text-lg leading-none" aria-hidden="true">🇮🇳</span>
           <span class="hidden lg:inline">Rs.</span>
@@ -179,115 +277,379 @@
     <div class="relative z-10 mx-auto max-w-[960px] text-center">
       <h1 class="text-2xl font-extrabold uppercase tracking-[0.12em] text-white drop-shadow-md sm:text-3xl md:text-4xl">See the world for less</h1>
       <div id="search" class="mt-10 -mb-24 rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-[0_12px_40px_rgba(15,23,42,0.18)] ring-1 ring-white/60 sm:mt-12 sm:-mb-28 sm:p-6 md:p-8">
-        <form action="#" method="get" class="relative pb-12 sm:pb-14">
-          <div class="-mx-1 mb-4 flex flex-nowrap justify-start gap-0 overflow-x-auto border-b border-slate-200 pb-1 [-webkit-overflow-scrolling:touch] sm:flex-wrap sm:gap-1">
-            <button type="button" class="search-tab is-active">
+        <div class="relative pb-1">
+          <div class="-mt-9 mb-3 ml-auto mr-auto flex w-fit max-w-full flex-nowrap justify-start gap-0 overflow-x-auto rounded-xl border border-slate-200 bg-white px-1 pb-0.5 pt-1 shadow-sm [-webkit-overflow-scrolling:touch] sm:flex-wrap sm:gap-0.5" role="tablist" aria-label="Search type">
+            <button type="button" role="tab" aria-selected="true" data-search-tab="hotels" class="search-tab is-active">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
               Hotels
             </button>
-            <button type="button" class="search-tab">
+            <button type="button" role="tab" aria-selected="false" data-search-tab="flights" class="search-tab">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
               Flights
             </button>
-            <button type="button" class="search-tab">
+            <button type="button" role="tab" aria-selected="false" data-search-tab="homes" class="search-tab">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
               Homes &amp; Apts
             </button>
-            <button type="button" class="search-tab">
+            <button type="button" role="tab" aria-selected="false" data-search-tab="packages" class="search-tab">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
               Flight + Hotel
             </button>
-            <button type="button" class="search-tab">
+            <button type="button" role="tab" aria-selected="false" data-search-tab="activities" class="search-tab">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               Activities
             </button>
-            <button type="button" class="search-tab">
+            <button type="button" role="tab" aria-selected="false" data-search-tab="transfer" class="search-tab">
               <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12M8 12h12m-12 5h12M4 7h.01M4 12h.01M4 17h.01"/></svg>
               Airport transfer
             </button>
           </div>
-          <div class="rounded-2xl border border-slate-200 bg-slate-50/40 p-3 sm:p-4">
-          <div class="mb-5 flex flex-wrap gap-3">
-            <button type="button" class="rounded-full border-2 border-sky-600 bg-white px-4 py-2 text-sm font-bold text-sky-700 shadow-sm">Overnight stays</button>
-            <button type="button" class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-slate-300">Day use stays</button>
-          </div>
-          <div class="mb-4">
-            <label class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-500">Enter a destination or property</label>
-            <div class="relative">
-              <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-              </span>
-              <input type="text" name="q" placeholder="City, hotel, or landmark" class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500/30" autocomplete="off" />
+
+          <!-- Hotels -->
+          <div id="search-panel-hotels" class="search-panel is-active rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="hotels">
+            <div class="mb-4 flex flex-wrap gap-2">
+              <button type="button" class="hotel-stay-btn is-active rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-sky-300" data-hotel-stay="overnight">Overnight stays</button>
+              <button type="button" class="hotel-stay-btn rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-sky-300" data-hotel-stay="dayuse">Day use stays</button>
             </div>
-          </div>
-          <div class="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
-            <div class="relative min-h-[4.5rem]">
-              <label class="mb-1 block text-xs font-bold uppercase tracking-wide text-slate-500">Check-in</label>
-              <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-                <input id="checkin" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
-                <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
-                  <div>
-                    <div id="checkin-date" class="text-base font-bold text-slate-900">—</div>
-                    <div id="checkin-day" class="text-xs text-slate-500">Select date</div>
-                  </div>
-                  <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <form action="#" method="get" class="hotel-stay-panel is-active" data-hotel-stay-panel="overnight">
+              <div class="mb-4">
+                <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Enter a destination or property</label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  </span>
+                  <input type="text" name="q" placeholder="City, hotel, or landmark" class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm text-slate-800 placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" autocomplete="off" />
                 </div>
               </div>
-            </div>
-            <div class="relative min-h-[4.5rem]">
-              <label class="mb-1 block text-xs font-bold uppercase tracking-wide text-slate-500">Check-out</label>
-              <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-                <input id="checkout" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
-                <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
-                  <div>
-                    <div id="checkout-date" class="text-base font-bold text-slate-900">—</div>
-                    <div id="checkout-day" class="text-xs text-slate-500">Select date</div>
+              <div class="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+                <div class="relative min-h-[4.5rem]">
+                  <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Check-in</label>
+                  <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                    <input id="checkin" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                    <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                      <div>
+                        <div id="checkin-date" class="text-base font-bold text-slate-900">—</div>
+                        <div id="checkin-day" class="text-xs text-slate-500">Select date</div>
+                      </div>
+                      <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
                   </div>
-                  <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="relative min-h-[4.5rem]">
+                  <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Check-out</label>
+                  <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                    <input id="checkout" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                    <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                      <div>
+                        <div id="checkout-date" class="text-base font-bold text-slate-900">—</div>
+                        <div id="checkout-day" class="text-xs text-slate-500">Select date</div>
+                      </div>
+                      <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 lg:col-span-1">
+                  <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Guests &amp; rooms</label>
+                  <div class="relative">
+                    <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    </span>
+                    <select name="guests" class="w-full appearance-none rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-10 text-sm font-medium text-slate-800 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                      <option>2 adults, 1 room</option>
+                      <option>1 adult, 1 room</option>
+                      <option>2 adults, 2 rooms</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div class="mb-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-200/80 pt-4 text-sm text-slate-700">
+                <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="bf" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Free breakfast</label>
+                <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="fc" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Free cancellation</label>
+                <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="star" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Star rating: 4+</label>
+                <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="review" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Review score: 8+</label>
+              </div>
+              <div class="mb-2">
+                <button type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-sky-600 hover:text-sky-800">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                  Add a flight
+                </button>
+              </div>
+              <button type="submit" class="mx-auto mt-4 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search hotels</button>
+            </form>
+            <form action="#" method="get" class="hotel-stay-panel" data-hotel-stay-panel="dayuse">
+              <p class="mb-3 text-xs text-slate-600">Book a room for a few daytime hours — great for work breaks or layovers.</p>
+              <div class="mb-4">
+                <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Where</label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  </span>
+                  <input type="text" name="dq" placeholder="City or hotel" class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+                </div>
+              </div>
+              <div class="mb-4 grid gap-3 sm:grid-cols-2">
+                <div>
+                  <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Date</label>
+                  <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                    <input id="dayuse-date" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                    <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                      <div>
+                        <div id="dayuse-date-display" class="text-base font-bold text-slate-900">—</div>
+                        <div id="dayuse-day-display" class="text-xs text-slate-500">Select date</div>
+                      </div>
+                      <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Time window</label>
+                  <select name="slot" class="w-full rounded-xl border border-slate-300 bg-white py-3 px-3 text-sm font-medium text-slate-800 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                    <option>6h — 12h (morning)</option>
+                    <option>12h — 18h (afternoon)</option>
+                    <option>18h — 22h (evening)</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search day use</button>
+            </form>
+          </div>
+
+          <!-- Flights -->
+          <form id="search-panel-flights" class="search-panel rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="flights" action="#" method="get">
+            <div class="mb-4 flex flex-wrap gap-2">
+              <label class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sky-600 bg-white px-3 py-1.5 text-sm font-semibold text-sky-800"><input type="radio" name="trip" value="round" class="text-sky-600 focus:ring-sky-500" checked /> Round trip</label>
+              <label class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-600"><input type="radio" name="trip" value="oneway" class="text-sky-600 focus:ring-sky-500" /> One way</label>
             </div>
-            <div class="sm:col-span-2 lg:col-span-1">
-              <label class="mb-1 block text-xs font-bold uppercase tracking-wide text-slate-500">Guests &amp; rooms</label>
+            <div class="mb-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">From</label>
+                <input type="text" name="from" placeholder="City or airport" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">To</label>
+                <input type="text" name="to" placeholder="City or airport" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+            </div>
+            <div class="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Depart</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="flight-depart" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-2.5">
+                    <div>
+                      <div id="flight-depart-date" class="text-sm font-bold text-slate-900">—</div>
+                      <div id="flight-depart-day" class="text-xs text-slate-500">Date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div id="flight-return-wrap" class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Return</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="flight-return" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-2.5">
+                    <div>
+                      <div id="flight-return-date" class="text-sm font-bold text-slate-900">—</div>
+                      <div id="flight-return-day" class="text-xs text-slate-500">Date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Passengers</label>
+                <select name="pax" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                  <option>1 adult</option>
+                  <option>2 adults</option>
+                  <option>2 adults, 1 child</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Cabin</label>
+                <select name="cabin" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                  <option>Economy</option>
+                  <option>Premium economy</option>
+                  <option>Business</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search flights</button>
+          </form>
+
+          <!-- Homes -->
+          <form id="search-panel-homes" class="search-panel rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="homes" action="#" method="get">
+            <div class="mb-4">
+              <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Destination</label>
               <div class="relative">
                 <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </span>
-                <select class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-10 text-sm font-medium text-slate-800 focus:border-sky-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500/30">
-                  <option>2 adults, 1 room</option>
-                  <option>1 adult, 1 room</option>
-                  <option>2 adults, 2 rooms</option>
-                </select>
-                <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </span>
+                <input type="text" name="hq" placeholder="City, area, or landmark" class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
               </div>
             </div>
-          </div>
-          <div class="mb-4 flex flex-wrap gap-x-6 gap-y-2 border-t border-slate-100 pt-4 text-sm text-slate-700">
-            <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="bf" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Free breakfast</label>
-            <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="fc" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Free cancellation</label>
-            <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="star" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Star rating: 4+</label>
-            <label class="inline-flex cursor-pointer items-center gap-2"><input type="checkbox" name="review" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500" /> Review score: 8+</label>
-          </div>
-          <div class="mb-5">
-            <button type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-sky-600 hover:text-sky-800">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              Add a flight
-            </button>
-          </div>
-          </div>
-          <button type="submit" class="absolute bottom-0 left-1/2 w-full max-w-[330px] -translate-x-1/2 translate-y-1/2 rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search</button>
-        </form>
+            <div class="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Check-in</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="home-checkin" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                    <div>
+                      <div id="home-checkin-date" class="text-base font-bold text-slate-900">—</div>
+                      <div id="home-checkin-day" class="text-xs text-slate-500">Select date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Check-out</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="home-checkout" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                    <div>
+                      <div id="home-checkout-date" class="text-base font-bold text-slate-900">—</div>
+                      <div id="home-checkout-day" class="text-xs text-slate-500">Select date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Guests</label>
+                <select name="hguests" class="w-full rounded-xl border border-slate-300 bg-white py-3 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                  <option>2 guests</option>
+                  <option>3 guests</option>
+                  <option>4+ guests</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search homes</button>
+          </form>
+
+          <!-- Flight + Hotel -->
+          <form id="search-panel-packages" class="search-panel rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="packages" action="#" method="get">
+            <div class="mb-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Origin</label>
+                <input type="text" name="po" placeholder="Leaving from" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Destination</label>
+                <input type="text" name="pd" placeholder="Going to" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+            </div>
+            <div class="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Start</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="pkg-start" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                    <div>
+                      <div id="pkg-start-date" class="text-base font-bold text-slate-900">—</div>
+                      <div id="pkg-start-day" class="text-xs text-slate-500">Select date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">End</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="pkg-end" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                    <div>
+                      <div id="pkg-end-date" class="text-base font-bold text-slate-900">—</div>
+                      <div id="pkg-end-day" class="text-xs text-slate-500">Select date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Rooms</label>
+                <select name="prooms" class="w-full rounded-xl border border-slate-300 bg-white py-3 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30">
+                  <option>1 room</option>
+                  <option>2 rooms</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search packages</button>
+          </form>
+
+          <!-- Activities -->
+          <form id="search-panel-activities" class="search-panel rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="activities" action="#" method="get">
+            <div class="mb-4">
+              <label class="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Where</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </span>
+                <input type="text" name="act" placeholder="City or activity" class="w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+            </div>
+            <div class="mb-4 max-w-sm">
+              <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">When</label>
+              <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                <input id="act-date" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                  <div>
+                    <div id="act-date-display" class="text-base font-bold text-slate-900">—</div>
+                    <div id="act-day-display" class="text-xs text-slate-500">Select date</div>
+                  </div>
+                  <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search activities</button>
+          </form>
+
+          <!-- Airport transfer -->
+          <form id="search-panel-transfer" class="search-panel rounded-2xl border border-slate-200 bg-[#f4f5f7] p-3 sm:p-4" role="tabpanel" data-panel="transfer" action="#" method="get">
+            <div class="mb-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Pick-up</label>
+                <input type="text" name="pu" placeholder="Airport, hotel, address" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Drop-off</label>
+                <input type="text" name="do" placeholder="Airport, hotel, address" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+            </div>
+            <div class="mb-4 grid gap-3 sm:grid-cols-2">
+              <div class="relative min-h-[4.25rem]">
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Date</label>
+                <div class="relative overflow-hidden rounded-xl border border-slate-300 bg-white">
+                  <input id="tr-date" type="date" class="absolute inset-0 z-20 h-full w-full cursor-pointer opacity-0" />
+                  <div class="pointer-events-none flex items-start justify-between gap-2 p-3">
+                    <div>
+                      <div id="tr-date-display" class="text-base font-bold text-slate-900">—</div>
+                      <div id="tr-day-display" class="text-xs text-slate-500">Select date</div>
+                    </div>
+                    <svg class="h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="mb-1 block text-[11px] font-bold uppercase tracking-wide text-slate-500">Time</label>
+                <input type="time" name="trtime" class="w-full rounded-xl border border-slate-300 bg-white py-2.5 px-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30" />
+              </div>
+            </div>
+            <button type="submit" class="mx-auto mt-2 block w-full max-w-md rounded-full bg-sky-600 py-3 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-md transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-500/40">Search transfers</button>
+          </form>
+
+        </div>
       </div>
     </div>
   </section>
 
   <section class="pb-12 pt-36 sm:pt-40">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between gap-3">
+      <div class="flex w-full flex-wrap items-center justify-between gap-3">
         <h2 class="text-3xl font-extrabold text-sky-900">Top destinations in India</h2>
-        <a href="bangalore.html" class="hidden rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-semibold text-sky-700 hover:bg-slate-50 sm:inline">Explore Bangalore Hotels</a>
         <div class="hidden items-center gap-2 sm:flex">
           <button id="india-prev" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50" aria-label="Previous destinations">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -298,18 +660,18 @@
         </div>
       </div>
       <div id="india-slider" class="hide-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Chennai city landmark" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Chennai</h3><p class="text-sm text-slate-500">2,832 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Jaipur palace architecture" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Jaipur</h3><p class="text-sm text-slate-500">3,082 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Varanasi ghats on Ganga river" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Varanasi</h3><p class="text-sm text-slate-500">2,000 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kochi waterfront and Chinese fishing nets" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Kochi</h3><p class="text-sm text-slate-500">2,165 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pune city skyline" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Pune</h3><p class="text-sm text-slate-500">2,494 accommodations</p></div></article>
-        <article class="group card-lift overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Chennai city landmark" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Chennai</h3><p class="text-sm text-slate-500">2,832 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Jaipur palace architecture" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Jaipur</h3><p class="text-sm text-slate-500">3,082 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Varanasi evening aarti at ghats" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Varanasi</h3><p class="text-sm text-slate-500">2,000 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kochi coastal cityscape" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Kochi</h3><p class="text-sm text-slate-500">2,165 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pune urban roads and lights" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Pune</h3><p class="text-sm text-slate-500">2,494 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1561501878-aabd62634533?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pondicherry French quarter street" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Pondicherry</h3><p class="text-sm text-slate-500">1,596 accommodations</p></div></article>
-        <article class="group card-lift min-w-[210px] snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kolkata heritage architecture" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold">Kolkata</h3><p class="text-sm text-slate-500">2,852 accommodations</p></div></article>
+        <a href="varanasi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Varanasi ghats on Ganga river" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Varanasi</h3><p class="text-sm text-slate-500">2,000 accommodations</p></div></a>
+        <a href="kochi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kochi waterfront and Chinese fishing nets" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Kochi</h3><p class="text-sm text-slate-500">2,165 accommodations</p></div></a>
+        <a href="pune.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pune city skyline" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Pune</h3><p class="text-sm text-slate-500">2,494 accommodations</p></div></a>
+        <a href="pondicherry.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1561501878-aabd62634533?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pondicherry French quarter street" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Pondicherry</h3><p class="text-sm text-slate-500">1,596 accommodations</p></div></a>
+        <a href="kolkata.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kolkata Howrah bridge and river" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Kolkata</h3><p class="text-sm text-slate-500">2,852 accommodations</p></div></a>
+        <a href="chennai.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Chennai city landmark" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Chennai</h3><p class="text-sm text-slate-500">2,832 accommodations</p></div></a>
+        <a href="jaipur.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Jaipur palace architecture" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Jaipur</h3><p class="text-sm text-slate-500">3,082 accommodations</p></div></a>
+        <a href="bangalore.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bangalore city skyline" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Bangalore</h3><p class="text-sm text-slate-500">5,372 accommodations</p></div></a>
+        <a href="mumbai.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1566552881560-b8f3a9f92786?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mumbai waterfront skyline" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Mumbai</h3><p class="text-sm text-slate-500">4,177 accommodations</p></div></a>
+        <a href="new-delhi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="New Delhi landmark" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">New Delhi</h3><p class="text-sm text-slate-500">12,786 accommodations</p></div></a>
+        <a href="goa.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Goa beach view" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Goa</h3><p class="text-sm text-slate-500">9,254 accommodations</p></div></a>
+        <a href="hyderabad.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--dest"><img src="https://images.unsplash.com/photo-1596178065887-ede8beee09de?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Hyderabad monument" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Hyderabad</h3><p class="text-sm text-slate-500">2,735 accommodations</p></div></a>
       </div>
       <div class="mt-3 flex justify-center gap-2 sm:hidden">
         <button id="india-prev-mobile" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm" aria-label="Previous destinations">
@@ -322,50 +684,262 @@
     </div>
   </section>
 
-  <section class="bg-white py-12">
+  <section class="border-y border-slate-200/80 bg-gradient-to-b from-slate-50 to-white py-12" id="city-stays" aria-labelledby="city-stays-heading">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-4 flex items-center justify-between">
-        <h2 class="text-3xl font-extrabold text-sky-900">Accommodation Promotions</h2>
-        <a href="#" class="text-sm font-semibold text-sky-700">View all</a>
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 id="city-stays-heading" class="text-3xl font-extrabold text-sky-900">Hotels by city</h2>
+          <p class="mt-1 max-w-2xl text-sm text-slate-600">Choose a city — handpicked stays update instantly. Each list is unique to that destination.</p>
+        </div>
+        <div class="mt-2 flex shrink-0 items-center gap-2 sm:mt-0">
+          <label for="city-stay-select" class="sr-only">City</label>
+          <select id="city-stay-select" class="city-stay-select w-full min-w-[200px] rounded-xl border border-slate-300 bg-white py-2.5 pl-3 pr-10 text-sm font-semibold text-slate-800 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 sm:w-auto">
+            <option value="bangalore">Bangalore</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="new-delhi">New Delhi</option>
+            <option value="goa">Goa</option>
+            <option value="hyderabad">Hyderabad</option>
+            <option value="chennai">Chennai</option>
+            <option value="jaipur">Jaipur</option>
+            <option value="varanasi">Varanasi</option>
+            <option value="kochi">Kochi</option>
+            <option value="pune">Pune</option>
+            <option value="pondicherry">Pondicherry</option>
+            <option value="kolkata">Kolkata</option>
+          </select>
+        </div>
       </div>
 
+      <div class="hide-scrollbar mt-4 flex gap-2 overflow-x-auto pb-1 pt-0.5" id="city-stay-chips" role="tablist" aria-label="Quick city filter"></div>
+
+      <div class="mt-4 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4">
+        <span class="text-xs font-bold uppercase tracking-wide text-slate-500">Star rating</span>
+        <div class="flex flex-wrap gap-2" id="star-filters" role="group" aria-label="Filter by star rating">
+          <button type="button" class="star-filter-btn is-active" data-stars="0">All</button>
+          <button type="button" class="star-filter-btn" data-stars="3">3+ ★</button>
+          <button type="button" class="star-filter-btn" data-stars="4">4+ ★</button>
+          <button type="button" class="star-filter-btn" data-stars="5">5 ★</button>
+        </div>
+      </div>
+
+      <p id="city-stay-count" class="mt-3 text-sm text-slate-500" aria-live="polite"></p>
+
+      <div id="city-hotel-grid" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section class="bg-white py-12" id="accommodation-promos">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="text-3xl font-extrabold text-sky-900">Accommodation Promotions</h2>
+          <p class="mt-1 max-w-2xl text-sm text-slate-600">Member rates and limited-time savings on hotels &amp; resorts — book before offers expire.</p>
+        </div>
+        <a href="accommodation-promotions.html" class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sky-700 hover:text-sky-900">View all <span aria-hidden="true">→</span></a>
+      </div>
       <div class="promo-wrap">
         <button id="promo-prev" class="promo-arrow left-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Previous promotion">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <div id="promo-slider" class="hide-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-1 sm:px-2">
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210f9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner Chennai" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">India</p><p class="text-3xl font-black leading-none">Extra 10% off</p><p class="text-xs font-semibold">Stay your way</p></div></div></article>
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner pool resort" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">India</p><p class="text-3xl font-black leading-none">Extra 10% off</p><p class="text-xs font-semibold">Stay &amp; save</p></div></div></article>
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner hill hotel" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">India</p><p class="text-3xl font-black leading-none">Extra 10% off</p><p class="text-xs font-semibold">Hot summer deals</p></div></div></article>
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner city skyline" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">Malaysia</p><p class="text-3xl font-black leading-none">Extra 15% off</p><p class="text-xs font-semibold">Extraordinary deals</p></div></div></article>
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner world heritage" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">South Asia</p><p class="text-3xl font-black leading-none">Extra 10% off</p><p class="text-xs font-semibold">Limited time offer</p></div></div></article>
-          <article class="promo-banner"><img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Promotion banner spring travel" loading="lazy" decoding="async" /><div class="promo-copy"><div><p class="text-xs font-semibold uppercase tracking-wider">China</p><p class="text-3xl font-black leading-none">Extra 5% off</p><p class="text-xs font-semibold">Special spring sale</p></div></div></article>
+        <div id="promo-slider" class="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 py-2 sm:px-2">
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210f9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Coastal stay promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">India</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 10% off</p>
+                <p class="text-xs font-medium text-white/90">Stay your way</p>
+              </div>
+            </div>
+          </a>
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Pool resort promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">India</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 10% off</p>
+                <p class="text-xs font-medium text-white/90">Stay &amp; save</p>
+              </div>
+            </div>
+          </a>
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Hill hotel promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">India</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 10% off</p>
+                <p class="text-xs font-medium text-white/90">Hot summer deals</p>
+              </div>
+            </div>
+          </a>
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="City skyline promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">Malaysia</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 15% off</p>
+                <p class="text-xs font-medium text-white/90">Extraordinary deals</p>
+              </div>
+            </div>
+          </a>
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Heritage promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">South Asia</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 10% off</p>
+                <p class="text-xs font-medium text-white/90">Limited time</p>
+              </div>
+            </div>
+          </a>
+          <a href="accommodation-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Spring travel promotion" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-sky-200">China</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra 5% off</p>
+                <p class="text-xs font-medium text-white/90">Spring sale</p>
+              </div>
+            </div>
+          </a>
         </div>
         <button id="promo-next" class="promo-arrow right-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Next promotion">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
+    </div>
+  </section>
 
-      <h3 class="mt-8 text-3xl font-extrabold text-slate-800">Flights &amp; Activities Promotions</h3>
-      <div class="mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1">
-        <article class="promo-banner"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tours and attractions offer" loading="lazy" decoding="async" /></article>
-        <article class="promo-banner"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764b6e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Flash sale flight offer" loading="lazy" decoding="async" /></article>
+  <section class="border-y border-slate-100 bg-slate-50/90 py-12" id="flights-activities-promos">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="text-3xl font-extrabold text-sky-900">Flights &amp; Activities Promotions</h2>
+          <p class="mt-1 max-w-2xl text-sm text-slate-600">Flash fares, city tours, and attraction bundles — updated weekly.</p>
+        </div>
+        <a href="flights-activities-promotions.html" class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sky-700 hover:text-sky-900">View all <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="promo-wrap">
+        <button id="fa-promo-prev" class="promo-arrow left-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Previous flights and activities promotions">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div id="fa-promo-slider" class="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 py-2 sm:px-2">
+          <a href="flights-activities-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tours and attractions" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-amber-200">Activities</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Up to 25% off</p>
+                <p class="text-xs font-medium text-white/90">City tours &amp; attractions</p>
+              </div>
+            </div>
+          </a>
+          <a href="flights-activities-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1502920917128-1aa500764b6e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Flight flash sale" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-amber-200">Flights</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Flash sale</p>
+                <p class="text-xs font-medium text-white/90">Domestic &amp; short haul</p>
+              </div>
+            </div>
+          </a>
+          <a href="flights-activities-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Airport and travel" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-amber-200">Bundle</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Flight + Hotel</p>
+                <p class="text-xs font-medium text-white/90">Save more together</p>
+              </div>
+            </div>
+          </a>
+          <a href="flights-activities-promotions.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Outdoor experiences" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-amber-200">Experiences</p>
+                <p class="text-2xl font-black leading-tight drop-shadow">Extra perks</p>
+                <p class="text-xs font-medium text-white/90">Nature &amp; day trips</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button id="fa-promo-next" class="promo-arrow right-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Next flights and activities promotions">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <section class="py-12">
+  <section class="py-12" id="property-picks">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-extrabold text-slate-800">Properties we think you'll like</h2>
-      <div class="promo-wrap mt-4">
+      <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="text-3xl font-extrabold text-slate-800">Properties we think you'll like</h2>
+          <p class="mt-1 max-w-2xl text-sm text-slate-600">Curated partner collections — from global flags to design-led boutiques.</p>
+        </div>
+        <a href="properties.html" class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sky-700 hover:text-sky-900">View all <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="promo-wrap">
         <button id="property-prev" class="promo-arrow left-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Previous properties">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <div id="property-slider" class="hide-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 py-1 sm:px-2">
-          <article class="property-banner"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Accor discover hotel banner" loading="lazy" decoding="async" /></article>
-          <article class="property-banner"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Amazing hotels property banner" loading="lazy" decoding="async" /></article>
-          <article class="property-banner"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Your stay your way property banner" loading="lazy" decoding="async" /></article>
-          <article class="property-banner"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Luxury property deal banner" loading="lazy" decoding="async" /></article>
+        <div id="property-slider" class="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 py-2 sm:px-2">
+          <a href="properties.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Accor partner collection" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-violet-200">Partner</p>
+                <p class="text-xl font-black leading-tight drop-shadow">Accor &amp; more</p>
+                <p class="text-xs font-medium text-white/90">Discover rewards</p>
+              </div>
+            </div>
+          </a>
+          <a href="properties.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Amazing hotels collection" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-violet-200">Collection</p>
+                <p class="text-xl font-black leading-tight drop-shadow">Amazing stays</p>
+                <p class="text-xs font-medium text-white/90">Hand-picked comfort</p>
+              </div>
+            </div>
+          </a>
+          <a href="properties.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Your stay your way" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-violet-200">Flex</p>
+                <p class="text-xl font-black leading-tight drop-shadow">Your stay, your way</p>
+                <p class="text-xs font-medium text-white/90">Free cancellation picks</p>
+              </div>
+            </div>
+          </a>
+          <a href="properties.html" class="deal-card group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md ring-1 ring-slate-100 transition hover:shadow-xl hover:ring-sky-200/60">
+            <div class="relative aspect-[16/8] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Luxury property deals" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-violet-200">Luxury</p>
+                <p class="text-xl font-black leading-tight drop-shadow">Premium escapes</p>
+                <p class="text-xs font-medium text-white/90">Skyline &amp; sea views</p>
+              </div>
+            </div>
+          </a>
         </div>
         <button id="property-next" class="promo-arrow right-[-14px] hidden sm:inline-flex items-center justify-center" type="button" aria-label="Next properties">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -374,11 +948,338 @@
     </div>
   </section>
 
-  <section class="bg-white py-12"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-extrabold text-sky-900">Popular destinations outside India</h2><div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"><article class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Long-tail boats and limestone cliffs near Phuket" loading="lazy" decoding="async" /></div><div class="p-4"><h3 class="font-bold">Phuket</h3><p class="text-sm text-slate-500">12,290 accommodations</p></div></article><article class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Balinese temple gate reflected in still water" loading="lazy" decoding="async" /></div><div class="p-4"><h3 class="font-bold">Bali</h3><p class="text-sm text-slate-500">32,908 accommodations</p></div></article><article class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Petronas Twin Towers and Kuala Lumpur skyline" loading="lazy" decoding="async" /></div><div class="p-4"><h3 class="font-bold">Kuala Lumpur</h3><p class="text-sm text-slate-500">19,902 accommodations</p></div></article><article class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="My Khe beach shoreline in Da Nang Vietnam" loading="lazy" decoding="async" /></div><div class="p-4"><h3 class="font-bold">Da Nang</h3><p class="text-sm text-slate-500">5,534 accommodations</p></div></article><article class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ajman corniche and UAE waterfront at dusk" loading="lazy" decoding="async" /></div><div class="p-4"><h3 class="font-bold">Ajman</h3><p class="text-sm text-slate-500">264 accommodations</p></div></article></div></div></section>
+  <section class="bg-white py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex w-full flex-wrap items-center justify-between gap-3">
+        <h2 class="text-3xl font-extrabold text-sky-900">Popular destinations outside India</h2>
+        <div class="hidden items-center gap-2 sm:flex">
+          <button id="intl-prev" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50" aria-label="Previous international destinations">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="intl-next" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50" aria-label="Next international destinations">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="intl-slider" class="hide-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
+        <a href="dubai.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Dubai" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Dubai</h3><p class="text-sm text-slate-500">19,464 accommodations</p></div></a>
+        <a href="bangkok.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1563499155-4b2849c7c2e6?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bangkok" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Bangkok</h3><p class="text-sm text-slate-500">12,048 accommodations</p></div></a>
+        <a href="abu-dhabi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Abu Dhabi" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Abu Dhabi</h3><p class="text-sm text-slate-500">721 accommodations</p></div></a>
+        <a href="pattaya.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pattaya" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Pattaya</h3><p class="text-sm text-slate-500">11,909 accommodations</p></div></a>
+        <a href="sharjah.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Sharjah" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Sharjah</h3><p class="text-sm text-slate-500">323 accommodations</p></div></a>
+        <a href="phuket.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Phuket" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Phuket</h3><p class="text-sm text-slate-500">12,290 accommodations</p></div></a>
+        <a href="bali.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bali" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Bali</h3><p class="text-sm text-slate-500">32,908 accommodations</p></div></a>
+        <a href="kuala-lumpur.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kuala Lumpur" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Kuala Lumpur</h3><p class="text-sm text-slate-500">19,902 accommodations</p></div></a>
+        <a href="ajman.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ajman" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Ajman</h3><p class="text-sm text-slate-500">264 accommodations</p></div></a>
+        <a href="da-nang.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Da Nang" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Da Nang</h3><p class="text-sm text-slate-500">5,534 accommodations</p></div></a>
+        <a href="ho-chi-minh-city.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38cd48?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ho Chi Minh City" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Ho Chi Minh City</h3><p class="text-sm text-slate-500">15,546 accommodations</p></div></a>
+        <a href="krabi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Krabi" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Krabi</h3><p class="text-sm text-slate-500">2,053 accommodations</p></div></a>
+        <a href="singapore.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Singapore" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Singapore</h3><p class="text-sm text-slate-500">1,326 accommodations</p></div></a>
+        <a href="ras-al-khaimah.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1509316785289-025f5b846b5e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ras Al Khaimah" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Ras Al Khaimah</h3><p class="text-sm text-slate-500">398 accommodations</p></div></a>
+        <a href="hanoi.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1509031438505-ba0ca31d2dd8?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Hanoi" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Hanoi</h3><p class="text-sm text-slate-500">10,744 accommodations</p></div></a>
+        <a href="mecca.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1591604129939-fe8b0a994478?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mecca" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Mecca</h3><p class="text-sm text-slate-500">970 accommodations</p></div></a>
+        <a href="fujairah.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Fujairah" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Fujairah</h3><p class="text-sm text-slate-500">153 accommodations</p></div></a>
+        <a href="kathmandu.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1609137144813-7d992893be098?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kathmandu" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Kathmandu</h3><p class="text-sm text-slate-500">1,914 accommodations</p></div></a>
+        <a href="medina.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1548013146-72479768b4b8?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Medina" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Medina</h3><p class="text-sm text-slate-500">745 accommodations</p></div></a>
+        <a href="phu-quoc-island.html" class="group card-lift min-w-[210px] snap-start block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><div class="card-media card-media--intl"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Phu Quoc Island" loading="lazy" decoding="async" /></div><div class="p-4 text-center"><h3 class="font-bold text-slate-900">Phu Quoc Island</h3><p class="text-sm text-slate-500">4,127 accommodations</p></div></a>
+      </div>
+      <div class="mt-3 flex justify-center gap-2 sm:hidden">
+        <button id="intl-prev-mobile" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm" aria-label="Previous international destinations">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="intl-next-mobile" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm" aria-label="Next international destinations">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
 
   <section class="py-12"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-extrabold text-sky-900">Why Choose Us</h2><div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><div class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--why"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Calculator and coins suggesting travel savings" loading="lazy" decoding="async" /></div><div class="p-5"><p class="font-bold text-sky-900">Affordable pricing</p><p class="mt-1 text-sm text-slate-600">Member deals and transparent fares—no surprise fees at checkout.</p></div></div><div class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--why"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Modern high-rise hotel building with glass facade" loading="lazy" decoding="async" /></div><div class="p-5"><p class="font-bold text-sky-900">Wide range of hotels</p><p class="mt-1 text-sm text-slate-600">From budget rooms to five-star resorts in thousands of cities.</p></div></div><div class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--why"><img src="https://images.unsplash.com/photo-1563013545-570ae0e7d8b1?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Padlock on keyboard representing secure online payment" loading="lazy" decoding="async" /></div><div class="p-5"><p class="font-bold text-sky-900">Secure booking</p><p class="mt-1 text-sm text-slate-600">Encrypted payments and trusted partners for every reservation.</p></div></div><div class="group card-lift overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100"><div class="card-media card-media--why"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Customer support headset on a clean desk" loading="lazy" decoding="async" /></div><div class="p-5"><p class="font-bold text-sky-900">24/7 support</p><p class="mt-1 text-sm text-slate-600">Real humans on chat and phone whenever your plans shift.</p></div></div></div></div></section>
 
-  <footer class="mt-10 bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"><div class="mb-8 rounded-2xl bg-slate-900/60 p-6"><div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 footer-links text-sm"><div><h4 class="font-semibold text-white">Help</h4><ul class="mt-2 space-y-1"><li><a href="#">Help center</a></li><li><a href="#">FAQs</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li><li><a href="#">Terms of use</a></li></ul></div><div><h4 class="font-semibold text-white">Company</h4><ul class="mt-2 space-y-1"><li><a href="#">About us</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Blog</a></li></ul></div><div><h4 class="font-semibold text-white">Destinations</h4><ul class="mt-2 space-y-1"><li><a href="#">Countries/Territories</a></li><li><a href="#">All Flight Routes</a></li></ul></div><div><h4 class="font-semibold text-white">Partner with us</h4><ul class="mt-2 space-y-1"><li><a href="#">Partner Hub</a></li><li><a href="#">Advertise with us</a></li><li><a href="#">Affiliates</a></li></ul></div><div><h4 class="font-semibold text-white">Get the app</h4><ul class="mt-2 space-y-1"><li><a href="#">iOS app</a></li><li><a href="#">Android app</a></li></ul></div></div></div><div class="mt-8 border-t border-slate-800 pt-4 text-xs text-slate-500">© 2005–2026 Infinity Routes Travels. All rights reserved.</div></div></footer>
+  <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 footer-links text-sm">
+          <div>
+            <h4 class="font-semibold text-white">Help</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="#">Help center</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#">Cookie policy</a></li>
+              <li><a href="#">Terms of use</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Company</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Popular in India</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="bangalore.html">Bangalore</a></li>
+              <li><a href="mumbai.html">Mumbai</a></li>
+              <li><a href="new-delhi.html">New Delhi</a></li>
+              <li><a href="goa.html">Goa</a></li>
+              <li><a href="hyderabad.html">Hyderabad</a></li>
+              <li><a href="chennai.html">Chennai</a></li>
+              <li><a href="jaipur.html">Jaipur</a></li>
+              <li><a href="varanasi.html">Varanasi</a></li>
+              <li><a href="kochi.html">Kochi</a></li>
+              <li><a href="pune.html">Pune</a></li>
+              <li><a href="pondicherry.html">Pondicherry</a></li>
+              <li><a href="kolkata.html">Kolkata</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Partner with us</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="#">Partner Hub</a></li>
+              <li><a href="#">Advertise with us</a></li>
+              <li><a href="#">Affiliates</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      <div id="footer-sitemap-root" class="footer-directory-wrap footer-directory border-t border-slate-200">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <p class="mb-10 text-center text-xs text-slate-500 sm:text-left">International hotels, country hubs, guides &amp; holiday homes</p>
+          <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 xl:gap-x-8">
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Destination Cities</h3>
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Hotels</a></li>
+                <li><a href="destination.html">Bandung Hotels</a></li>
+                <li><a href="bangkok.html">Bangkok Hotels</a></li>
+                <li><a href="destination.html">Boracay Island Hotels</a></li>
+                <li><a href="destination.html">Busan Hotels</a></li>
+                <li><a href="destination.html">Cebu Hotels</a></li>
+                <li><a href="destination.html">Chiang Mai Hotels</a></li>
+                <li><a href="da-nang.html">Da Nang Hotels</a></li>
+                <li><a href="destination.html">Fukuoka Hotels</a></li>
+                <li><a href="hanoi.html">Hanoi Hotels</a></li>
+                <li><a href="destination.html">Hat Yai Hotels</a></li>
+                <li><a href="ho-chi-minh-city.html">Ho Chi Minh City Hotels</a></li>
+                <li><a href="destination.html">Hoi An Hotels</a></li>
+                <li><a href="destination.html">Hong Kong Hotels</a></li>
+                <li><a href="destination.html">Hua Hin Hotels</a></li>
+                <li><a href="destination.html">Hualien Hotels</a></li>
+                <li><a href="destination.html">Ipoh Hotels</a></li>
+                <li><a href="destination.html">Jakarta Hotels</a></li>
+                <li><a href="destination.html">Jeju Island Hotels</a></li>
+                <li><a href="destination.html">Johor Bahru Hotels</a></li>
+                <li><a href="destination.html">Kaohsiung Hotels</a></li>
+                <li><a href="destination.html">Kota Kinabalu Hotels</a></li>
+                <li><a href="krabi.html">Krabi Hotels</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <p class="fd-region xl:mt-8">Asia</p>
+              <ul class="fd-list">
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Hotels</a></li>
+                <li><a href="destination.html">Kuantan Hotels</a></li>
+                <li><a href="destination.html">Kyoto Hotels</a></li>
+                <li><a href="destination.html">Malacca Hotels</a></li>
+                <li><a href="destination.html">Manila Hotels</a></li>
+                <li><a href="destination.html">Nagoya Hotels</a></li>
+                <li><a href="destination.html">Nha Trang Hotels</a></li>
+                <li><a href="destination.html">Okinawa Hotels</a></li>
+                <li><a href="destination.html">Osaka Hotels</a></li>
+                <li><a href="pattaya.html">Pattaya Hotels</a></li>
+                <li><a href="destination.html">Penang Hotels</a></li>
+                <li><a href="phuket.html">Phuket Hotels</a></li>
+                <li><a href="destination.html">Sapporo Hotels</a></li>
+                <li><a href="destination.html">Seoul Hotels</a></li>
+                <li><a href="destination.html">Shanghai Hotels</a></li>
+                <li><a href="singapore.html">Singapore Hotels</a></li>
+                <li><a href="destination.html">Surabaya Hotels</a></li>
+                <li><a href="destination.html">Taichung Hotels</a></li>
+                <li><a href="destination.html">Tainan Hotels</a></li>
+                <li><a href="destination.html">Taipei Hotels</a></li>
+                <li><a href="destination.html">Tokyo Hotels</a></li>
+                <li><a href="destination.html">Yilan Hotels</a></li>
+                <li><a href="destination.html">Yogyakarta Hotels</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Countries &amp; Territories</h3>
+              <p class="fd-region">Africa</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Morocco Hotels</a></li>
+                <li><a href="destination.html">South Africa Hotels</a></li>
+              </ul>
+
+              <p class="fd-region">Americas</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Argentina Hotels</a></li>
+                <li><a href="destination.html">Brazil Hotels</a></li>
+                <li><a href="destination.html">Canada Hotels</a></li>
+                <li><a href="destination.html">Mexico Hotels</a></li>
+                <li><a href="destination.html">United States Hotels</a></li>
+                <li><a href="destination.html">Venezuela Hotels</a></li>
+              </ul>
+
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Cambodia Hotels</a></li>
+                <li><a href="destination.html">China Hotels</a></li>
+                <li><a href="destination.html">India Hotels</a></li>
+                <li><a href="destination.html">Indonesia Hotels</a></li>
+                <li><a href="destination.html">Japan Hotels</a></li>
+                <li><a href="destination.html">Laos Hotels</a></li>
+                <li><a href="destination.html">Malaysia Hotels</a></li>
+                <li><a href="destination.html">Myanmar Hotels</a></li>
+                <li><a href="destination.html">Nepal Hotels</a></li>
+                <li><a href="destination.html">Philippines Hotels</a></li>
+                <li><a href="destination.html">South Korea Hotels</a></li>
+                <li><a href="destination.html">Sri Lanka Hotels</a></li>
+                <li><a href="destination.html">Taiwan Hotels</a></li>
+                <li><a href="destination.html">Thailand Hotels</a></li>
+                <li><a href="destination.html">Vietnam Hotels</a></li>
+              </ul>
+
+              <p class="fd-region">Middle East</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Bahrain Hotels</a></li>
+                <li><a href="destination.html">Egypt Hotels</a></li>
+                <li><a href="destination.html">Israel Hotels</a></li>
+                <li><a href="destination.html">United Arab Emirates Hotels</a></li>
+              </ul>
+
+              <p class="fd-region">Oceania</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Australia Hotels</a></li>
+                <li><a href="destination.html">New Zealand Hotels</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Europe</h3>
+              <ul class="fd-list">
+                <li><a href="destination.html">Austria Hotels</a></li>
+                <li><a href="destination.html">Czech Republic Hotels</a></li>
+                <li><a href="destination.html">Denmark Hotels</a></li>
+                <li><a href="destination.html">Finland Hotels</a></li>
+                <li><a href="destination.html">France Hotels</a></li>
+                <li><a href="destination.html">Germany Hotels</a></li>
+                <li><a href="destination.html">Greece Hotels</a></li>
+                <li><a href="destination.html">Hungary Hotels</a></li>
+                <li><a href="destination.html">Ireland Hotels</a></li>
+                <li><a href="destination.html">Italy Hotels</a></li>
+                <li><a href="destination.html">Netherlands Hotels</a></li>
+                <li><a href="destination.html">Russia Hotels</a></li>
+                <li><a href="destination.html">Spain Hotels</a></li>
+                <li><a href="destination.html">Sweden Hotels</a></li>
+                <li><a href="destination.html">Switzerland Hotels</a></li>
+                <li><a href="destination.html">United Kingdom Hotels</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Destination Guides</h3>
+              <ul class="fd-list">
+                <li><a href="destination.html">Destination Guides Home</a></li>
+              </ul>
+
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Guide</a></li>
+                <li><a href="destination.html">Nagasaki Guide</a></li>
+                <li><a href="destination.html">Hong Kong Guide</a></li>
+                <li><a href="destination.html">Jakarta Guide</a></li>
+                <li><a href="destination.html">Jeju Island Guide</a></li>
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Guide</a></li>
+                <li><a href="destination.html">Kyoto Guide</a></li>
+                <li><a href="destination.html">Kyushu Guide</a></li>
+                <li><a href="destination.html">Malacca Guide</a></li>
+                <li><a href="destination.html">Philippines Guide</a></li>
+                <li><a href="destination.html">Nara Guide</a></li>
+                <li><a href="destination.html">Osaka Guide</a></li>
+                <li><a href="phuket.html">Phuket Guide</a></li>
+                <li><a href="destination.html">Sapporo Guide</a></li>
+                <li><a href="destination.html">Seoul Guide</a></li>
+                <li><a href="singapore.html">Singapore Guide</a></li>
+                <li><a href="destination.html">Taichung Guide</a></li>
+                <li><a href="destination.html">Taipei Guide</a></li>
+                <li><a href="destination.html">Tokyo Guide</a></li>
+                <li><a href="goa.html">Goa Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Europe</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Paris Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Middle East</p>
+              <ul class="fd-list">
+                <li><a href="dubai.html">Dubai Guide</a></li>
+                <li><a href="destination.html">Jeddah Guide</a></li>
+                <li><a href="destination.html">Saudi Arabia Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Oceania</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Brisbane Guide</a></li>
+                <li><a href="destination.html">Melbourne Guide</a></li>
+                <li><a href="destination.html">Sydney Guide</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0">
+              <h3 class="fd-title">Holiday homes &amp; rentals</h3>
+              <p class="mb-3 text-xs text-slate-500">Apartments, bungalows &amp; villas</p>
+              <p class="fd-region">Asia apartments</p>
+              <ul class="fd-list">
+                <li><a href="bangkok.html">Bangkok Apartments</a></li>
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Apartments</a></li>
+                <li><a href="destination.html">Manila Apartments</a></li>
+                <li><a href="destination.html">Osaka Apartments</a></li>
+                <li><a href="pattaya.html">Pattaya Apartments</a></li>
+                <li><a href="destination.html">Tokyo Apartments</a></li>
+              </ul>
+
+              <p class="fd-region">Asia bungalows</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Bungalows</a></li>
+                <li><a href="destination.html">Koh Kood Bungalows</a></li>
+                <li><a href="destination.html">Koh Lanta Bungalows</a></li>
+                <li><a href="destination.html">Koh Phangan Bungalows</a></li>
+                <li><a href="destination.html">Koh Samet Bungalows</a></li>
+                <li><a href="phu-quoc-island.html">Phu Quoc Island Bungalows</a></li>
+              </ul>
+
+              <p class="fd-region">Asia villas</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Villas</a></li>
+                <li><a href="phuket.html">Phuket Villas</a></li>
+                <li><a href="pattaya.html">Pattaya Villas</a></li>
+                <li><a href="destination.html">Hua Hin / Cha-am Villas</a></li>
+                <li><a href="destination.html">Seoul Villas</a></li>
+                <li><a href="destination.html">Port Dickson Villas</a></li>
+              </ul>
+
+              <p class="fd-region">Vacation rentals</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Tokyo Vacation Rentals</a></li>
+                <li><a href="bangkok.html">Bangkok Vacation Rentals</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800 bg-slate-950 text-slate-500">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 text-xs">
+          © 2005–2026 Infinity Routes Travels. All rights reserved.
+        </div>
+      </div>
+</footer>
+
 
   <script>
     (function () {
@@ -412,19 +1313,95 @@
       var today = new Date();
       var tomorrow = new Date(today);
       tomorrow.setDate(today.getDate() + 1);
+      function bindDate(id, dateId, dayId) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("change", function () { updateDateUI(id, dateId, dayId); });
+      }
+      function setDefaultDate(id, d) {
+        var el = document.getElementById(id);
+        if (el) el.value = fmtIso(d);
+      }
+
       var ci = document.getElementById("checkin");
       var co = document.getElementById("checkout");
       if (ci) ci.value = fmtIso(today);
       if (co) co.value = fmtIso(tomorrow);
       updateDateUI("checkin", "checkin-date", "checkin-day");
       updateDateUI("checkout", "checkout-date", "checkout-day");
-      if (ci) ci.addEventListener("change", function () { updateDateUI("checkin", "checkin-date", "checkin-day"); });
-      if (co) co.addEventListener("change", function () { updateDateUI("checkout", "checkout-date", "checkout-day"); });
+      bindDate("checkin", "checkin-date", "checkin-day");
+      bindDate("checkout", "checkout-date", "checkout-day");
+
+      setDefaultDate("dayuse-date", today);
+      updateDateUI("dayuse-date", "dayuse-date-display", "dayuse-day-display");
+      bindDate("dayuse-date", "dayuse-date-display", "dayuse-day-display");
+
+      setDefaultDate("flight-depart", today);
+      setDefaultDate("flight-return", tomorrow);
+      updateDateUI("flight-depart", "flight-depart-date", "flight-depart-day");
+      updateDateUI("flight-return", "flight-return-date", "flight-return-day");
+      bindDate("flight-depart", "flight-depart-date", "flight-depart-day");
+      bindDate("flight-return", "flight-return-date", "flight-return-day");
+
+      setDefaultDate("home-checkin", today);
+      setDefaultDate("home-checkout", tomorrow);
+      updateDateUI("home-checkin", "home-checkin-date", "home-checkin-day");
+      updateDateUI("home-checkout", "home-checkout-date", "home-checkout-day");
+      bindDate("home-checkin", "home-checkin-date", "home-checkin-day");
+      bindDate("home-checkout", "home-checkout-date", "home-checkout-day");
+
+      setDefaultDate("pkg-start", today);
+      setDefaultDate("pkg-end", tomorrow);
+      updateDateUI("pkg-start", "pkg-start-date", "pkg-start-day");
+      updateDateUI("pkg-end", "pkg-end-date", "pkg-end-day");
+      bindDate("pkg-start", "pkg-start-date", "pkg-start-day");
+      bindDate("pkg-end", "pkg-end-date", "pkg-end-day");
+
+      setDefaultDate("act-date", today);
+      updateDateUI("act-date", "act-date-display", "act-day-display");
+      bindDate("act-date", "act-date-display", "act-day-display");
+
+      setDefaultDate("tr-date", today);
+      updateDateUI("tr-date", "tr-date-display", "tr-day-display");
+      bindDate("tr-date", "tr-date-display", "tr-day-display");
+
+      function syncFlightTripMode() {
+        var oneway = document.querySelector('input[name="trip"][value="oneway"]');
+        var wrap = document.getElementById("flight-return-wrap");
+        if (!wrap || !oneway) return;
+        if (oneway.checked) wrap.classList.add("hidden");
+        else wrap.classList.remove("hidden");
+      }
+      document.querySelectorAll('input[name="trip"]').forEach(function (r) {
+        r.addEventListener("change", syncFlightTripMode);
+      });
+      syncFlightTripMode();
+
+      document.querySelectorAll(".hotel-stay-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var mode = btn.getAttribute("data-hotel-stay");
+          if (!mode) return;
+          document.querySelectorAll(".hotel-stay-btn").forEach(function (b) { b.classList.remove("is-active"); });
+          btn.classList.add("is-active");
+          document.querySelectorAll(".hotel-stay-panel").forEach(function (p) {
+            p.classList.toggle("is-active", p.getAttribute("data-hotel-stay-panel") === mode);
+          });
+        });
+      });
 
       document.querySelectorAll(".search-tab").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          document.querySelectorAll(".search-tab").forEach(function (b) { b.classList.remove("is-active"); });
+          var key = btn.getAttribute("data-search-tab");
+          if (!key) return;
+          document.querySelectorAll(".search-tab").forEach(function (b) {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-selected", "false");
+          });
           btn.classList.add("is-active");
+          btn.setAttribute("aria-selected", "true");
+          document.querySelectorAll(".search-panel").forEach(function (p) {
+            p.classList.toggle("is-active", p.id === "search-panel-" + key);
+          });
         });
       });
 
@@ -442,6 +1419,20 @@
       bindSliderButton("india-prev-mobile", -1);
       bindSliderButton("india-next-mobile", 1);
 
+      var intlSlider = document.getElementById("intl-slider");
+      function bindIntlButton(btnId, direction) {
+        var btn = document.getElementById(btnId);
+        if (!btn || !intlSlider) return;
+        btn.addEventListener("click", function () {
+          var jump = Math.round(intlSlider.clientWidth * 0.82);
+          intlSlider.scrollBy({ left: direction * jump, behavior: "smooth" });
+        });
+      }
+      bindIntlButton("intl-prev", -1);
+      bindIntlButton("intl-next", 1);
+      bindIntlButton("intl-prev-mobile", -1);
+      bindIntlButton("intl-next-mobile", 1);
+
       var promoSlider = document.getElementById("promo-slider");
       function bindPromoButton(btnId, direction) {
         var btn = document.getElementById(btnId);
@@ -453,6 +1444,17 @@
       bindPromoButton("promo-prev", -1);
       bindPromoButton("promo-next", 1);
 
+      var faPromoSlider = document.getElementById("fa-promo-slider");
+      function bindFaPromoButton(btnId, direction) {
+        var btn = document.getElementById(btnId);
+        if (!btn || !faPromoSlider) return;
+        btn.addEventListener("click", function () {
+          faPromoSlider.scrollBy({ left: direction * 320, behavior: "smooth" });
+        });
+      }
+      bindFaPromoButton("fa-promo-prev", -1);
+      bindFaPromoButton("fa-promo-next", 1);
+
       var propertySlider = document.getElementById("property-slider");
       function bindPropertyButton(btnId, direction) {
         var btn = document.getElementById(btnId);
@@ -463,6 +1465,185 @@
       }
       bindPropertyButton("property-prev", -1);
       bindPropertyButton("property-next", 1);
+
+      /* City-specific hotel filter */
+      var CITY_PAGES = {
+        bangalore: "bangalore.html",
+        mumbai: "mumbai.html",
+        "new-delhi": "new-delhi.html",
+        goa: "goa.html",
+        hyderabad: "hyderabad.html",
+        chennai: "chennai.html",
+        jaipur: "jaipur.html",
+        varanasi: "varanasi.html",
+        kochi: "kochi.html",
+        pune: "pune.html",
+        pondicherry: "pondicherry.html",
+        kolkata: "kolkata.html"
+      };
+      var CITY_HOTELS = {
+        bangalore: [
+          { name: "The Oberoi Bengaluru", area: "MG Road · Central", price: 12400, rating: 9.2, reviews: 842, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "ITC Gardenia", area: "Residency Road", price: 9800, rating: 9.0, reviews: 1203, stars: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Novotel Bengaluru Techpark", area: "Whitefield", price: 4500, rating: 8.4, reviews: 654, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Lemon Tree Premier", area: "Electronics City", price: 3200, rating: 8.1, reviews: 412, stars: 4, img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" }
+        ],
+        mumbai: [
+          { name: "The Taj Mahal Palace", area: "Colaba · Gateway", price: 18500, rating: 9.4, reviews: 2104, stars: 5, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "JW Marriott Juhu", area: "Juhu Beach", price: 11200, rating: 8.9, reviews: 987, stars: 5, img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" },
+          { name: "Sofitel BKC", area: "Bandra Kurla", price: 8900, rating: 8.7, reviews: 721, stars: 5, img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=80" },
+          { name: "Hotel Suba International", area: "Andheri East", price: 3800, rating: 8.0, reviews: 556, stars: 4, img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80" }
+        ],
+        "new-delhi": [
+          { name: "The Leela Palace", area: "Chanakyapuri", price: 16800, rating: 9.3, reviews: 1532, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "ITC Maurya", area: "Sardar Patel Marg", price: 14200, rating: 9.1, reviews: 1102, stars: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Roseate House", area: "Aerocity", price: 7200, rating: 8.6, reviews: 889, stars: 5, img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=80" },
+          { name: "Bloomrooms Janpath", area: "Connaught Place", price: 2900, rating: 8.2, reviews: 1204, stars: 3, img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" }
+        ],
+        goa: [
+          { name: "The St. Regis Goa", area: "Mobor · South Goa", price: 22400, rating: 9.2, reviews: 445, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "Taj Holiday Village", area: "Candolim", price: 13800, rating: 9.0, reviews: 678, stars: 5, img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" },
+          { name: "Hyatt Regency", area: "Cansaulim", price: 9100, rating: 8.9, reviews: 512, stars: 5, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Zostel Goa", area: "Anjuna", price: 1800, rating: 8.5, reviews: 2301, stars: 3, img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" }
+        ],
+        hyderabad: [
+          { name: "Taj Falaknuma Palace", area: "Engine Bowli", price: 28000, rating: 9.5, reviews: 312, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "ITC Kohenur", area: "HITEC City", price: 8900, rating: 8.9, reviews: 723, stars: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Novotel HICC", area: "Madhapur", price: 5200, rating: 8.4, reviews: 601, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Lemon Tree Gachibowli", area: "Financial District", price: 3400, rating: 8.0, reviews: 445, stars: 4, img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" }
+        ],
+        chennai: [
+          { name: "The Leela Palace", area: "Adyar", price: 11200, rating: 9.1, reviews: 887, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "ITC Grand Chola", area: "Guindy", price: 10500, rating: 9.2, reviews: 1402, stars: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Radisson Blu City Centre", area: "Egmore", price: 4800, rating: 8.3, reviews: 712, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Ibis Chennai", area: "OMR", price: 3200, rating: 8.1, reviews: 523, stars: 3, img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" }
+        ],
+        jaipur: [
+          { name: "Rambagh Palace", area: "Bhawani Singh Road", price: 32000, rating: 9.4, reviews: 421, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "Fairmont Jaipur", area: "Kukas", price: 9800, rating: 8.9, reviews: 612, stars: 5, img: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80" },
+          { name: "Trident Jaipur", area: "Amer Road", price: 7200, rating: 8.6, reviews: 889, stars: 5, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Zostel Jaipur", area: "Hathroi", price: 1200, rating: 8.4, reviews: 1567, stars: 3, img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" }
+        ],
+        varanasi: [
+          { name: "Taj Nadesar Palace", area: "Nadesar", price: 24000, rating: 9.0, reviews: 198, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "BrijRama Palace", area: "Ganges", price: 11200, rating: 8.9, reviews: 445, stars: 5, img: "https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=800&q=80" },
+          { name: "Hotel Surya", area: "Cantt", price: 4200, rating: 8.2, reviews: 678, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "goSTOPS Varanasi", area: "Assi Ghat", price: 900, rating: 8.6, reviews: 890, stars: 3, img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" }
+        ],
+        kochi: [
+          { name: "Brunton Boatyard", area: "Fort Kochi", price: 9800, rating: 9.0, reviews: 512, stars: 5, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Grand Hyatt", area: "Bolgatty", price: 8900, rating: 8.8, reviews: 723, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "Holiday Inn", area: "Civil Line", price: 4200, rating: 8.3, reviews: 601, stars: 4, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Zostel Kochi", area: "Mattancherry", price: 1100, rating: 8.5, reviews: 1120, stars: 3, img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" }
+        ],
+        pune: [
+          { name: "The Ritz-Carlton", area: "Yerawada", price: 12400, rating: 9.1, reviews: 334, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "JW Marriott", area: "Senapati Bapat Road", price: 9800, rating: 8.9, reviews: 778, stars: 5, img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" },
+          { name: "Lemon Tree Viman Nagar", area: "Viman Nagar", price: 4100, rating: 8.2, reviews: 556, stars: 4, img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" },
+          { name: "Treebo Trend", area: "Koregaon Park", price: 2200, rating: 7.9, reviews: 412, stars: 3, img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" }
+        ],
+        pondicherry: [
+          { name: "Palais de Mahe", area: "French Quarter", price: 7800, rating: 8.9, reviews: 312, stars: 5, img: "https://images.unsplash.com/photo-1561501878-aabd62634533?auto=format&fit=crop&w=800&q=80" },
+          { name: "The Promenade", area: "Beach Road", price: 6200, rating: 8.7, reviews: 501, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Le Dupleix", area: "White Town", price: 5400, rating: 8.5, reviews: 423, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "Micasa Hostel", area: "Auroville Road", price: 900, rating: 8.6, reviews: 890, stars: 3, img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" }
+        ],
+        kolkata: [
+          { name: "The Oberoi Grand", area: "Park Street", price: 11200, rating: 9.1, reviews: 923, stars: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
+          { name: "ITC Royal Bengal", area: "EM Bypass", price: 9800, rating: 9.0, reviews: 712, stars: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+          { name: "Novotel Kolkata", area: "New Town", price: 4500, rating: 8.4, reviews: 601, stars: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" },
+          { name: "The Park", area: "Park Street", price: 5200, rating: 8.3, reviews: 889, stars: 4, img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80" }
+        ]
+      };
+
+      function formatInr(n) {
+        return "₹" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function renderCityHotels() {
+        var grid = document.getElementById("city-hotel-grid");
+        var countEl = document.getElementById("city-stay-count");
+        var sel = document.getElementById("city-stay-select");
+        if (!grid || !sel) return;
+        var cityId = sel.value;
+        var list = CITY_HOTELS[cityId] || [];
+        var starsMin = 0;
+        var activeStar = document.querySelector("#star-filters .star-filter-btn.is-active");
+        if (activeStar) starsMin = Number(activeStar.getAttribute("data-stars")) || 0;
+        var filtered = list.filter(function (h) {
+          return starsMin === 0 ? true : h.stars >= starsMin;
+        });
+        var page = CITY_PAGES[cityId] || "#";
+        grid.innerHTML = "";
+        filtered.forEach(function (h) {
+          var art = document.createElement("article");
+          art.className = "group card-lift hotel-card-enter overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100";
+          art.innerHTML =
+            '<div class="card-media card-media--hotel relative">' +
+            '<img src="' + h.img + '" alt="' + h.name.replace(/"/g, "&quot;") + '" loading="lazy" decoding="async" />' +
+            '<span class="absolute right-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-slate-800 shadow-sm">' + h.rating + "</span>" +
+            "</div>" +
+            '<div class="p-4">' +
+            '<h3 class="font-bold text-slate-900">' + h.name + "</h3>" +
+            '<p class="mt-0.5 text-sm text-slate-500">' + h.area + " · " + h.stars + "-star</p>" +
+            '<p class="mt-1 text-xs text-slate-400">' + h.reviews.toLocaleString() + " reviews</p>" +
+            '<div class="mt-3 flex items-end justify-between gap-2">' +
+            '<p class="text-lg font-extrabold text-sky-900">' + formatInr(h.price) + ' <span class="text-xs font-normal text-slate-500">/ night</span></p>' +
+            '<a href="' + page + '" class="shrink-0 text-sm font-semibold text-sky-600 hover:underline">View city</a>' +
+            "</div></div>";
+          grid.appendChild(art);
+        });
+        if (countEl) {
+          var cityLabel = sel.options[sel.selectedIndex].text;
+          countEl.textContent =
+            filtered.length === 0
+              ? "No stays match this filter in " + cityLabel + " — try a lower star filter."
+              : "Showing " + filtered.length + " stay" + (filtered.length === 1 ? "" : "s") + " in " + cityLabel + ".";
+        }
+      }
+
+      var citySelect = document.getElementById("city-stay-select");
+      var chipWrap = document.getElementById("city-stay-chips");
+      if (citySelect && chipWrap) {
+        Array.prototype.forEach.call(citySelect.options, function (opt) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "city-chip" + (opt === citySelect.options[citySelect.selectedIndex] ? " is-active" : "");
+          b.setAttribute("role", "tab");
+          b.setAttribute("aria-selected", opt === citySelect.options[citySelect.selectedIndex] ? "true" : "false");
+          b.setAttribute("data-city", opt.value);
+          b.textContent = opt.text;
+          b.addEventListener("click", function () {
+            citySelect.value = opt.value;
+            chipWrap.querySelectorAll(".city-chip").forEach(function (c) {
+              c.classList.toggle("is-active", c.getAttribute("data-city") === opt.value);
+              c.setAttribute("aria-selected", c.getAttribute("data-city") === opt.value ? "true" : "false");
+            });
+            renderCityHotels();
+          });
+          chipWrap.appendChild(b);
+        });
+        citySelect.addEventListener("change", function () {
+          var v = citySelect.value;
+          chipWrap.querySelectorAll(".city-chip").forEach(function (c) {
+            c.classList.toggle("is-active", c.getAttribute("data-city") === v);
+            c.setAttribute("aria-selected", c.getAttribute("data-city") === v ? "true" : "false");
+          });
+          renderCityHotels();
+        });
+      }
+
+      document.querySelectorAll("#star-filters .star-filter-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("#star-filters .star-filter-btn").forEach(function (b) {
+            b.classList.remove("is-active");
+          });
+          btn.classList.add("is-active");
+          renderCityHotels();
+        });
+      });
+
+      renderCityHotels();
     })();
   </script>
 </body>
