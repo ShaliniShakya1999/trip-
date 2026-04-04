@@ -14,8 +14,8 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-  <header class="sticky top-0 z-50 border-b border-slate-200/90 bg-white/95 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-white/80">
-    <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2.5 lg:px-6">
+  <header class="sticky top-0 z-[100] border-b border-slate-200/80 bg-white/80 shadow-md shadow-slate-900/5 backdrop-blur-xl supports-[backdrop-filter]:bg-white/75">
+    <div class="mx-auto flex max-w-[1200px] items-center gap-3 px-4 py-2.5 lg:gap-4 lg:px-6">
       <a href="index.html" class="flex shrink-0 items-center gap-2.5">
         <span class="text-2xl font-black leading-none text-sky-600">∞</span>
         <span class="flex flex-col">
@@ -30,17 +30,22 @@
         </span>
       </a>
 
-      <nav class="hidden flex-1 flex-wrap items-center justify-center gap-x-0 gap-y-1 text-[11px] font-semibold text-slate-700 sm:text-[11.5px] lg:flex xl:gap-x-0.5 xl:text-[12px]">
-        <a href="index.html" class="whitespace-nowrap rounded-md px-1 py-2 text-sky-700 hover:bg-sky-50 sm:px-1.5 lg:px-1.5 xl:px-2">Home</a>
-        <a href="about.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">About</a>
-        <a href="destination.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Destinations</a>
-        <a href="tour.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Tours</a>
-        <a href="deals.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Deals</a>
-        <a href="flights.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Flights</a>
-        <a href="activities.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Activities</a>
-        <a href="blog.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Blog</a>
-        <a href="contact.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Contact</a>
+      <nav class="hidden flex-1 flex-wrap items-center justify-center gap-x-0.5 gap-y-1 text-[12px] font-semibold text-slate-700 lg:flex xl:gap-x-1 xl:text-[12.5px]" aria-label="Main">
+        <a href="index.html" class="whitespace-nowrap rounded-lg px-2 py-2 text-sky-700 hover:bg-sky-50">Home</a>
+        <a href="destination.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Destinations</a>
+        <a href="tour.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Packages</a>
+        <a href="about.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">About</a>
+        <a href="contact.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Contact</a>
+        <a href="deals.html" class="whitespace-nowrap rounded-lg px-2 py-2 text-amber-700 hover:bg-amber-50">Deals</a>
+        <a href="flights.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Flights</a>
+        <a href="activities.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Activities</a>
+        <a href="blog.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Blog</a>
       </nav>
+
+      <div class="ml-auto hidden items-center gap-2 lg:flex">
+        <a href="contact.html" class="irt-chrome-login rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-800 lg:px-4 lg:text-sm">Log in</a>
+        <a href="tour.html" class="irt-chrome-signup rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 px-3 py-2 text-xs font-bold text-white shadow-md shadow-sky-600/25 transition hover:from-sky-500 hover:to-indigo-500 lg:px-4 lg:text-sm">Sign up</a>
+      </div>
 
       <div class="flex shrink-0 items-center lg:hidden">
         <button type="button" id="irt-mobile-menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50" aria-label="Open menu" aria-expanded="false" aria-controls="irt-mobile-nav">
@@ -48,17 +53,21 @@
         </button>
       </div>
     </div>
-    <div id="irt-mobile-nav" class="hidden border-t border-slate-200 bg-white lg:hidden">
+    <div id="irt-mobile-nav" class="hidden border-t border-slate-200 bg-white/95 backdrop-blur-md lg:hidden">
       <nav class="mx-auto flex max-w-[1200px] flex-col gap-0.5 px-4 py-3 text-[13px] font-semibold text-slate-700">
         <a href="index.html" class="rounded-lg px-2 py-2.5 text-sky-700 hover:bg-sky-50">Home</a>
-        <a href="about.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">About</a>
         <a href="destination.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Destinations</a>
-        <a href="tour.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Tours</a>
-        <a href="deals.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Deals</a>
+        <a href="tour.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Packages</a>
+        <a href="about.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">About</a>
+        <a href="contact.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Contact</a>
+        <a href="deals.html" class="rounded-lg px-2 py-2.5 text-amber-800 hover:bg-amber-50">Deals</a>
         <a href="flights.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Flights</a>
         <a href="activities.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Activities</a>
         <a href="blog.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Blog</a>
-        <a href="contact.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Contact</a>
+        <div class="mt-2 flex gap-2 border-t border-slate-100 pt-3">
+          <a href="contact.html" class="irt-chrome-login flex-1 rounded-lg border border-slate-200 py-2.5 text-center font-bold">Log in</a>
+          <a href="tour.html" class="irt-chrome-signup flex-1 rounded-lg bg-sky-600 py-2.5 text-center font-bold text-white">Sign up</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -122,6 +131,42 @@
   </main>
 
   <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
+        <div class="mb-10 grid gap-8 border-b border-slate-700/60 pb-10 lg:grid-cols-12 lg:gap-10">
+          <div class="lg:col-span-5">
+            <p class="text-lg font-bold text-white">Infinity Routes Travels</p>
+            <p class="mt-2 max-w-md text-sm leading-relaxed text-slate-400">Affordable flights, hotels &amp; tours — trusted by 10,000+ travelers. Secure payments &amp; real support.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href="https://www.instagram.com/" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600 bg-slate-800/80 text-slate-200 transition hover:border-sky-500 hover:bg-sky-600 hover:text-white" rel="noopener noreferrer" target="_blank" aria-label="Instagram"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <a href="https://www.facebook.com/" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600 bg-slate-800/80 text-slate-200 transition hover:border-sky-500 hover:bg-sky-600 hover:text-white" rel="noopener noreferrer" target="_blank" aria-label="Facebook"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+              <a href="https://twitter.com/" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600 bg-slate-800/80 text-slate-200 transition hover:border-sky-500 hover:bg-sky-600 hover:text-white" rel="noopener noreferrer" target="_blank" aria-label="X (Twitter)"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a href="https://www.youtube.com/" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600 bg-slate-800/80 text-slate-200 transition hover:border-sky-500 hover:bg-sky-600 hover:text-white" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            </div>
+            <div class="mt-5 space-y-1 text-sm">
+              <a href="tel:+911800000000" class="block text-slate-300 transition hover:text-white">+91 1800-000-0000</a>
+              <a href="mailto:hello@infinityroutes.in" class="block text-slate-300 transition hover:text-white">hello@infinityroutes.in</a>
+              <span class="block text-slate-500">India · Mon–Sun 9:00–21:00 IST</span>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-sm font-semibold text-white">Newsletter — deals in your inbox</p>
+            <form id="irt-newsletter-form" class="mt-3 flex max-w-lg flex-col gap-2 sm:flex-row" action="#" method="post">
+              <label for="irt-newsletter-email" class="sr-only">Email</label>
+              <input id="irt-newsletter-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="min-h-[44px] flex-1 rounded-xl border border-slate-600 bg-slate-800/80 px-4 text-sm text-white placeholder:text-slate-500 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40" />
+              <button type="submit" class="min-h-[44px] shrink-0 rounded-xl bg-sky-600 px-6 text-sm font-bold text-white transition hover:bg-sky-500">Subscribe</button>
+            </form>
+            <p class="mt-2 text-xs text-slate-500">No spam — unsubscribe anytime. (Demo: shows a thank-you message only.)</p>
+            <div class="mt-6">
+              <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Quick links</p>
+              <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                <li><a href="tour.html" class="text-slate-400 hover:text-white">Packages</a></li>
+                <li><a href="deals.html" class="text-slate-400 hover:text-white">Deals</a></li>
+                <li><a href="flights.html" class="text-slate-400 hover:text-white">Flights</a></li>
+                <li><a href="help-center.html" class="text-slate-400 hover:text-white">Help</a></li>
+                <li><a href="privacy.html" class="text-slate-400 hover:text-white">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 footer-links text-sm">
           <div>
             <h4 class="font-semibold text-white">Help</h4>
