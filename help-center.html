@@ -3,37 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pattaya — City guide &amp; hotels | Infinity Routes Travels</title>
-  <meta name="description" content="Explore Pattaya: hand-picked hotels, top places to visit, and travel tips with Infinity Routes Travels." />
+  <title>Help center | Infinity Routes Travels</title>
+  <meta name="description" content="Get help with bookings, payments, and your Infinity Routes account." />
+  <meta name="robots" content="index,follow" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: "DM Sans", system-ui, sans-serif; }
-    .city-hero {
-      position: relative;
-      min-height: 300px;
-      overflow: hidden;
-      border-bottom-left-radius: 1.5rem;
-      border-bottom-right-radius: 1.5rem;
-      background-size: cover;
-      background-position: center 40%;
-      background-image: linear-gradient(105deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.62) 38%, rgba(2, 132, 199, 0.28) 72%, rgba(15, 23, 42, 0.45) 100%),
-        url("https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=2200&q=86");
-    }
-    @media (min-width: 768px) { .city-hero { min-height: 380px; } }
-    .card { transition: transform .2s ease, box-shadow .2s ease; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(15,23,42,.12); }
-    .spot-card { transition: transform .2s ease, box-shadow .2s ease; }
-    .spot-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(2, 132, 199, 0.15); }
-    .footer-links a { color: #cbd5e1; transition: color .2s ease; }
-    .footer-links a:hover { color: #fff; }
-  </style>
-    <link rel="stylesheet" href="css/irt-chrome.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/irt-chrome.css" />
 </head>
 <body class="bg-slate-50 text-slate-800">
-    <header class="sticky top-0 z-50 border-b border-slate-200/90 bg-white/95 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-white/80">
+
+  <header class="sticky top-0 z-50 border-b border-slate-200/90 bg-white/95 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-white/80">
     <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2.5 lg:px-6">
       <a href="index.html" class="flex shrink-0 items-center gap-2.5">
         <span class="text-2xl font-black leading-none text-sky-600">∞</span>
@@ -82,141 +63,58 @@
     </div>
   </header>
 
-
-  <section class="city-hero px-4 pb-10 pt-12 sm:px-6 sm:pb-12 sm:pt-16 lg:px-8">
-    <div class="relative z-10 mx-auto max-w-7xl">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-sky-100/90">Thailand · Gulf coast</p>
-      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-white drop-shadow sm:text-4xl md:text-5xl">Pattaya</h1>
-      <p class="mt-3 max-w-2xl text-base text-white/90 sm:text-lg">Beach strips, island day trips, and nightlife east of Bangkok.</p>
-      <p class="mt-2 text-sm text-white/80">11,909 accommodations listed</p>
-      <nav class="mt-5 flex flex-wrap items-center gap-2 text-sm text-white/85" aria-label="Breadcrumb">
-        <a href="index.html" class="font-medium underline decoration-white/40 underline-offset-2 hover:text-white">Home</a>
-        <span aria-hidden="true">/</span>
-        <span class="text-white/70">International</span>
-        <span aria-hidden="true">/</span>
-        <span class="text-white/70">Thailand</span>
-        <span aria-hidden="true">/</span>
-        <span class="font-semibold text-white">Pattaya</span>
-      </nav>
-    </div>
-  </section>
-
-  <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-    <section class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-100">
-      <div class="grid gap-0 lg:grid-cols-2">
-        <div class="p-6 sm:p-8 lg:p-10">
-          <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">About Pattaya</h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-            Pattaya mixes resort hotels, water sports, and offshore escapes to Koh Larn. Infinity Routes surfaces stays along Beach Road and Jomtien for quieter evenings.
-          </p>
-          <ul class="mt-5 space-y-2.5 text-sm text-slate-700 sm:text-[15px]">
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500"></span> Songthaews (shared pickups) are the budget way to move along the coast.</li>
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500"></span> Combine with Bangkok via motorway or bus in a few hours.</li>
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500"></span> Island ferries run frequently in dry season — check last return times.</li>
-          </ul>
-        </div>
-        <div class="relative min-h-[220px] bg-slate-200 lg:min-h-0">
-          <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent lg:bg-gradient-to-l"></div>
-          <p class="absolute bottom-4 left-4 right-4 text-sm font-medium text-white drop-shadow md:left-6">Explore Pattaya with Infinity Routes — curated stays and local insight.</p>
+  <main>
+    <section class="border-b border-slate-200 bg-gradient-to-br from-sky-900 via-slate-900 to-slate-950 px-4 py-14 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-sky-200/90">Support</p>
+        <h1 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Help center</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-sm text-white/85 sm:text-base">Find answers about bookings, payments, and your Infinity Routes account. Still need help? We are one message away.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="contact.html" class="inline-flex rounded-xl bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-lg hover:bg-slate-100">Contact us</a>
+          <a href="faqs.html" class="inline-flex rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur hover:bg-white/20">Browse FAQs</a>
         </div>
       </div>
     </section>
-
-    <section class="mt-12" id="hotels">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">Hotels in Pattaya</h2>
-          <p class="mt-1 text-sm text-slate-600">Featured stays — prices indicative, subject to season and availability.</p>
-        </div>
-      </div>
-      <div class="mt-6 space-y-4">
-        <article class="card rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
-          <div class="grid gap-4 md:grid-cols-[260px_1fr]">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="Hilton Pattaya" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" />
-            <div>
-              <h3 class="text-xl font-extrabold">Hilton Pattaya</h3>
-              <p class="mt-1 text-sm text-slate-600">Central Festival rooftop</p>
-              <p class="mt-2 text-sm font-semibold text-slate-700">Free Wi-Fi • Breakfast options • 24h front desk</p>
-              <div class="mt-3 flex flex-wrap items-center gap-3">
-                <span class="rounded-lg bg-emerald-100 px-2 py-1 text-sm font-bold text-emerald-800">8.6 Excellent</span>
-                <span class="text-sm text-slate-600">Guest favourite</span>
-                <span class="ml-auto text-lg font-extrabold text-sky-800">Rs. 11,200 <span class="text-xs font-semibold text-slate-500">avg/night</span></span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="card rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
-          <div class="grid gap-4 md:grid-cols-[260px_1fr]">
-            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80" alt="Holiday Inn Pattaya" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" />
-            <div>
-              <h3 class="text-xl font-extrabold">Holiday Inn Pattaya</h3>
-              <p class="mt-1 text-sm text-slate-600">Beach Road</p>
-              <p class="mt-2 text-sm font-semibold text-slate-700">Free Wi-Fi • Breakfast options • 24h front desk</p>
-              <div class="mt-3 flex flex-wrap items-center gap-3">
-                <span class="rounded-lg bg-emerald-100 px-2 py-1 text-sm font-bold text-emerald-800">8.6 Excellent</span>
-                <span class="text-sm text-slate-600">Guest favourite</span>
-                <span class="ml-auto text-lg font-extrabold text-sky-800">Rs. 6,400 <span class="text-xs font-semibold text-slate-500">avg/night</span></span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="card rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
-          <div class="grid gap-4 md:grid-cols-[260px_1fr]">
-            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=80" alt="Red Planet" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" />
-            <div>
-              <h3 class="text-xl font-extrabold">Red Planet</h3>
-              <p class="mt-1 text-sm text-slate-600">South Pattaya</p>
-              <p class="mt-2 text-sm font-semibold text-slate-700">Free Wi-Fi • Breakfast options • 24h front desk</p>
-              <div class="mt-3 flex flex-wrap items-center gap-3">
-                <span class="rounded-lg bg-emerald-100 px-2 py-1 text-sm font-bold text-emerald-800">8.6 Excellent</span>
-                <span class="text-sm text-slate-600">Guest favourite</span>
-                <span class="ml-auto text-lg font-extrabold text-sky-800">Rs. 2,100 <span class="text-xs font-semibold text-slate-500">avg/night</span></span>
-              </div>
-            </div>
-          </div>
-        </article>
-
+    <section class="border-b border-slate-200 bg-white px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-5xl gap-4 sm:grid-cols-3">
+        <a href="faqs.html" class="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-sky-200 hover:bg-sky-50/50">
+          <p class="text-xs font-bold uppercase tracking-wide text-sky-700">Quick</p>
+          <p class="mt-2 font-bold text-slate-900">FAQs</p>
+          <p class="mt-1 text-sm text-slate-600">Short answers to the most common questions.</p>
+        </a>
+        <a href="tour.html" class="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-sky-200 hover:bg-sky-50/50">
+          <p class="text-xs font-bold uppercase tracking-wide text-sky-700">Explore</p>
+          <p class="mt-2 font-bold text-slate-900">Tours</p>
+          <p class="mt-1 text-sm text-slate-600">Packages and guided experiences.</p>
+        </a>
+        <a href="destination.html" class="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-sky-200 hover:bg-sky-50/50">
+          <p class="text-xs font-bold uppercase tracking-wide text-sky-700">Places</p>
+          <p class="mt-2 font-bold text-slate-900">Destinations</p>
+          <p class="mt-1 text-sm text-slate-600">Hotels and guides by city and region.</p>
+        </a>
       </div>
     </section>
-
-    <section class="mt-14" id="explore">
-      <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">Top places to explore</h2>
-      <p class="mt-2 max-w-3xl text-sm text-slate-600 sm:text-base">Highlights travellers love in and around Pattaya.</p>
-      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="spot-card overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100">
-          <div class="aspect-[16/10] overflow-hidden bg-slate-200">
-            <img src="https://images.unsplash.com/photo-1528181304800-259b08848561?auto=format&fit=crop&w=900&q=80" alt="Sanctuary of Truth" class="h-full w-full object-cover transition duration-300 hover:scale-105" loading="lazy" decoding="async" />
-          </div>
-          <div class="p-5">
-            <h3 class="text-lg font-extrabold text-slate-900">Sanctuary of Truth</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">All-wood temple by the sea — allow a half day.</p>
-          </div>
-        </article>
-        <article class="spot-card overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100">
-          <div class="aspect-[16/10] overflow-hidden bg-slate-200">
-            <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b5e?auto=format&fit=crop&w=900&q=80" alt="Koh Larn day trip" class="h-full w-full object-cover transition duration-300 hover:scale-105" loading="lazy" decoding="async" />
-          </div>
-          <div class="p-5">
-            <h3 class="text-lg font-extrabold text-slate-900">Koh Larn day trip</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Snorkel-friendly beaches a short ferry away.</p>
-          </div>
-        </article>
-        <article class="spot-card overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm ring-1 ring-slate-100">
-          <div class="aspect-[16/10] overflow-hidden bg-slate-200">
-            <img src="https://images.unsplash.com/photo-1553527929-0ac90cb1b0d9?auto=format&fit=crop&w=900&q=80" alt="Walking Street evening" class="h-full w-full object-cover transition duration-300 hover:scale-105" loading="lazy" decoding="async" />
-          </div>
-          <div class="p-5">
-            <h3 class="text-lg font-extrabold text-slate-900">Walking Street evening</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">Neon, seafood, and live music — pace yourself.</p>
-          </div>
-        </article>
-
-      </div>
+    <section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <h2 class="text-lg font-extrabold text-slate-900">Getting started</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">Use the <a href="index.html#search-hero" class="font-semibold text-sky-700 hover:underline">homepage search</a> to explore hotels, flights, and activities. City pages list hand-picked stays and local tips. <a href="deals.html" class="font-semibold text-sky-700 hover:underline">Deals</a> highlights current offers.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Before you travel</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">Check passport and visa rules for your nationality, airline baggage limits, and hotel check-in times. For flights, arrive at the airport as your carrier recommends. Save your booking confirmation and a government ID on your phone.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Bookings &amp; changes</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">For modifications or cancellations, have your booking reference ready. Policies depend on the airline, hotel, or partner—our team can explain the next steps when you <a href="contact.html" class="font-semibold text-sky-700 hover:underline">contact us</a>. Name changes and date moves are often restricted on promotional fares.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Payments &amp; receipts</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">We work with trusted payment partners. Never share OTPs, card CVV, or net-banking passwords by email or chat. Need an invoice or GST details? Mention it in your message to support with your booking ID.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Refunds &amp; timelines</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">When a refund is approved, timing depends on your bank or card issuer—often 5–14 business days after the supplier processes it. We will confirm status by email when you <a href="contact.html" class="font-semibold text-sky-700 hover:underline">reach out</a> with your reference.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Safety &amp; fraud</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">We only request payments through our official site and listed channels. If someone asks for payment to a personal account or pressures you to share OTPs, stop and <a href="contact.html" class="font-semibold text-sky-700 hover:underline">report it</a> immediately.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Privacy &amp; account</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">Read our <a href="privacy.html" class="font-semibold text-sky-700 hover:underline">Privacy policy</a> and <a href="cookies.html" class="font-semibold text-sky-700 hover:underline">Cookie policy</a>. For terms of use, see <a href="terms.html" class="font-semibold text-sky-700 hover:underline">Terms of use</a>.</p>
+      <h2 class="mt-10 text-lg font-extrabold text-slate-900">Common questions</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600">See the <a href="faqs.html" class="font-semibold text-sky-700 hover:underline">FAQs</a> page for quick answers.</p>
     </section>
   </main>
 
-    <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
+  <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 footer-links text-sm">
           <div>
             <h4 class="font-semibold text-white">Help</h4>
@@ -499,7 +397,6 @@
         </div>
       </div>
 </footer>
-
   <script src="js/irt-nav.js" defer></script>
 </body>
 </html>

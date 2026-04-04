@@ -1,785 +1,390 @@
-﻿<!DOCTYPE html>
-<html dir="ltr" lang="zxx">
-
-
-<!-- Mirrored from boomdevstheme.com/tf/html/routehaven/destination.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Mar 2026 09:29:39 GMT -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta name="description" content="RouteHaven - Travel & Tour Booking HTML5 Template"/>
-    <meta name="keywords"
-        content="travel agency, travel adventures, wanderlust, tourism, agency, vacation planning, trip, journey, exploration, voyage, getaway, adventure, travel guide, holiday destinations"/>
-    <meta name="author" content="BoomDevs" />
-
-    <title>RouteHaven - Travel & Tour Booking HTML5 Template</title>
-
-    <link rel="icon" type="image/png" href="images/logo/favicon.png" />
-
-    <link rel="apple-touch-icon" href="images/logo/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="images/logo/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/logo/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="images/logo/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/logo/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="images/logo/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="images/logo/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="images/logo/apple-touch-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon-180x180.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fasthand&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/fontawesome.min.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-    <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/meanmenu.css" />
-    <link rel="stylesheet" href="css/nice-select.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/style.css" />
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinations | Infinity Routes Travels</title>
+  <meta name="description" content="Explore India and international cities—guides, hotels, and things to do." />
+  <meta name="robots" content="index,follow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/irt-chrome.css" />
 </head>
-<body>
-    <!-- Preloader Start !-->
-    <div id="preloader">
-        <div id="preloader-status">
-            <img src="images/preloader.gif" alt="Preloader">
-        </div>
+<body class="bg-slate-50 text-slate-800">
+
+  <header class="sticky top-0 z-50 border-b border-slate-200/90 bg-white/95 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-white/80">
+    <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-2.5 lg:px-6">
+      <a href="index.html" class="flex shrink-0 items-center gap-2.5">
+        <span class="text-2xl font-black leading-none text-sky-600">∞</span>
+        <span class="flex flex-col">
+          <span class="text-[1.05rem] font-bold leading-tight tracking-tight text-slate-800">Infinity Routes</span>
+          <span class="mt-0.5 flex gap-0.5">
+            <span class="h-1 w-1 rounded-full bg-rose-400"></span>
+            <span class="h-1 w-1 rounded-full bg-amber-400"></span>
+            <span class="h-1 w-1 rounded-full bg-emerald-400"></span>
+            <span class="h-1 w-1 rounded-full bg-sky-500"></span>
+            <span class="h-1 w-1 rounded-full bg-violet-400"></span>
+          </span>
+        </span>
+      </a>
+
+      <nav class="hidden flex-1 flex-wrap items-center justify-center gap-x-0 gap-y-1 text-[11px] font-semibold text-slate-700 sm:text-[11.5px] lg:flex xl:gap-x-0.5 xl:text-[12px]">
+        <a href="index.html" class="whitespace-nowrap rounded-md px-1 py-2 text-sky-700 hover:bg-sky-50 sm:px-1.5 lg:px-1.5 xl:px-2">Home</a>
+        <a href="about.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">About</a>
+        <a href="destination.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Destinations</a>
+        <a href="tour.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Tours</a>
+        <a href="deals.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Deals</a>
+        <a href="flights.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Flights</a>
+        <a href="activities.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Activities</a>
+        <a href="blog.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Blog</a>
+        <a href="contact.html" class="whitespace-nowrap rounded-md px-1 py-2 hover:bg-slate-50 hover:text-sky-700 sm:px-1.5 lg:px-1.5 xl:px-2">Contact</a>
+      </nav>
+
+      <div class="flex shrink-0 items-center lg:hidden">
+        <button type="button" id="irt-mobile-menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50" aria-label="Open menu" aria-expanded="false" aria-controls="irt-mobile-nav">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
-    <!-- Preloader End !-->
-
-    <!-- Header Start !-->
-    <header class="header-area">
-        <!-- Header Nav Menu Start -->
-        <div class="header-menu-area sticky-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-6 d-flex align-items-center">
-                        <div class="logo">
-                            <a href="index.html" class="standard-logo"><img src="images/logo/nav-logo.png" alt="logo"/></a>
-                            <a href="index.html" class="sticky-logo"><img src="images/logo/nav-logo.png" alt="logo"/></a>
-                            <a href="index.html" class="retina-logo"><img src="images/logo/nav-logo.png" alt="logo"/></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-10 col-lg-10 col-md-6 col-6 d-flex align-items-center justify-content-end">
-                        <div class="menu d-inline-block">
-                            <nav id="main-menu" class="main-menu">
-                                <ul>
-                                    <li class="dropdown">
-                                        <a href="index.html">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">Home Page 1</a></li>
-                                            <li><a href="index-2.html">Home Page 2</a></li>
-                                            <li><a href="index-3.html">Home Page 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li class="dropdown">
-                                        <a href="tour.html">Tour</a>
-                                        <ul class="submenu">
-                                            <li><a href="tour.html">Tour</a></li>
-                                            <li><a href="tour-details.html">Tour Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown active">
-                                        <a href="destination.html">Destination</a>
-                                        <ul class="submenu">
-                                            <li><a href="destination.html">Destination</a></li>
-                                            <li><a href="destination-details.html">Destination Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="blog.html">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- Header Button Start !-->
-                        <div class="header-btn">
-                            <div class="search-btn-wrapper"><a href="#" class="search-btn"><i class="icon-search"></i></a></div>
-                            <a href="#" class="user-login-btn"> <i class="icon-user"></i></a>
-                        </div>
-                        <!-- Header Button Start !-->
-                        <!-- Mobile Menu Toggle Button Start !-->
-                        <div class="mobile-menu-bar d-lg-none text-end">
-                            <a href="#" class="mobile-menu-toggle-btn"><i class="fal fa-bars"></i></a>
-                        </div>
-                        <!-- Mobile Menu Toggle Button End !-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header Nav Menu End -->
-    </header>
-    <!-- Header End !-->
-
-    <!-- Menu Sidebar Section Start -->
-    <div class="menu-sidebar-area">
-        <div class="menu-sidebar-wrapper">
-            <div class="menu-sidebar-close">
-                <button class="menu-sidebar-close-btn" id="menu_sidebar_close_btn">
-                    <i class="fal fa-times"></i>
-                </button>
-            </div>
-            <div class="menu-sidebar-content">
-                <div class="menu-sidebar-logo">
-                    <a href="index.html"><img src="images/logo/nav-logo.png" alt="logo"/></a>
-                </div>
-                <div class="mobile-nav-menu"></div>
-                <div class="menu-sidebar-content">
-                    <div class="menu-sidebar-single-widget">
-                        <h5 class="menu-sidebar-title">Contact Info</h5>
-                        <div class="header-contact-info">
-                            <span><i class="fa-solid fa-location-dot"></i>20, Bordeshi, New York, US</span>
-                            <span><a href="mailto:hello@transico.com"><i class="fa-solid fa-envelope"></i>hello@transico.com</a> </span>
-                            <span><a href="tel:+123-456-7890"><i class="fa-solid fa-phone"></i>+123-456-7890</a></span>
-                        </div>
-                        <div class="social-profile">
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="irt-mobile-nav" class="hidden border-t border-slate-200 bg-white lg:hidden">
+      <nav class="mx-auto flex max-w-[1200px] flex-col gap-0.5 px-4 py-3 text-[13px] font-semibold text-slate-700">
+        <a href="index.html" class="rounded-lg px-2 py-2.5 text-sky-700 hover:bg-sky-50">Home</a>
+        <a href="about.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">About</a>
+        <a href="destination.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Destinations</a>
+        <a href="tour.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Tours</a>
+        <a href="deals.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Deals</a>
+        <a href="flights.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Flights</a>
+        <a href="activities.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Activities</a>
+        <a href="blog.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Blog</a>
+        <a href="contact.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Contact</a>
+      </nav>
     </div>
-    <!-- Menu Sidebar Section Start -->
-    <div class="body-overlay"></div>
+  </header>
 
-    <!-- Page Header Start !-->
-    <div class="page-breadcrumb-area page-bg" style="background-image: url('images/breadcrumb/destination.jpg')">
-        <!-- <div class="page-overlay"></div> -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb-wrapper">
-                        <div class="page-heading">
-                            <h3 class="page-title">Destination</h3>
-                        </div>
-                        <div class="breadcrumb-list">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active"><a href="#">Destination</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main>
+    <section class="border-b border-slate-200 bg-gradient-to-br from-indigo-950 via-slate-900 to-sky-950 px-4 py-14 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-sky-200/90">Explore</p>
+        <h1 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Destinations</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-sm text-white/85 sm:text-base">Browse city guides and hotel picks across India and worldwide. Jump into a place to see stays, things to do, and travel tips.</p>
+      </div>
+    </section>
+    <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <h2 class="text-lg font-extrabold text-slate-900">India — top cities</h2>
+      <div class="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <a href="bangalore.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Bangalore</a>
+        <a href="mumbai.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Mumbai</a>
+        <a href="new-delhi.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">New Delhi</a>
+        <a href="goa.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Goa</a>
+        <a href="hyderabad.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Hyderabad</a>
+        <a href="chennai.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Chennai</a>
+        <a href="jaipur.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Jaipur</a>
+        <a href="kolkata.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Kolkata</a>
+        <a href="kochi.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Kochi</a>
+        <a href="pune.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Pune</a>
+        <a href="varanasi.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Varanasi</a>
+        <a href="pondicherry.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Pondicherry</a>
+      </div>
+      <h2 class="mt-12 text-lg font-extrabold text-slate-900">International hubs</h2>
+      <div class="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <a href="dubai.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Dubai</a>
+        <a href="bangkok.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Bangkok</a>
+        <a href="singapore.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Singapore</a>
+        <a href="bali.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Bali</a>
+        <a href="phuket.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Phuket</a>
+        <a href="kuala-lumpur.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Kuala Lumpur</a>
+        <a href="abu-dhabi.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Abu Dhabi</a>
+        <a href="hanoi.html" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-sky-300">Hanoi</a>
+      </div>
+      <p class="mt-10 text-center text-sm text-slate-600">Sample detail layout: <a href="destination-details.html" class="font-semibold text-sky-700 hover:underline">destination details</a> · <a href="deals.html" class="font-semibold text-sky-700 hover:underline">Deals</a></p>
+    </section>
+  </main>
+
+  <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 footer-links text-sm">
+          <div>
+            <h4 class="font-semibold text-white">Help</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="help-center.html">Help center</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+              <li><a href="privacy.html">Privacy policy</a></li>
+              <li><a href="cookies.html">Cookie policy</a></li>
+              <li><a href="terms.html">Terms of use</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Company</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="about.html">About us</a></li>
+              <li><a href="contact.html#careers">Careers</a></li>
+              <li><a href="contact.html#press">Press</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Popular in India</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="bangalore.html">Bangalore</a></li>
+              <li><a href="mumbai.html">Mumbai</a></li>
+              <li><a href="new-delhi.html">New Delhi</a></li>
+              <li><a href="goa.html">Goa</a></li>
+              <li><a href="hyderabad.html">Hyderabad</a></li>
+              <li><a href="chennai.html">Chennai</a></li>
+              <li><a href="jaipur.html">Jaipur</a></li>
+              <li><a href="varanasi.html">Varanasi</a></li>
+              <li><a href="kochi.html">Kochi</a></li>
+              <li><a href="pune.html">Pune</a></li>
+              <li><a href="pondicherry.html">Pondicherry</a></li>
+              <li><a href="kolkata.html">Kolkata</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white">Partner with us</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="contact.html#partners">Partner Hub</a></li>
+              <li><a href="contact.html#advertise">Advertise with us</a></li>
+              <li><a href="contact.html#affiliates">Affiliates</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Page Header End !-->
-
-     <!-- Location Area Start -->
-    <div class="destination-page location-area style-4">
-        <div class="container">
-            <div class="section-title justify-content-start text-start">
-                <div class="sec-content">
-                    <h2 class="title">Popular destination</h2>
-                    <img class="bottom-shape" src="images/shape/bottom-bar.png" alt="Bottom Shape">
-                </div>
-            </div>
-            <div class="row gy-4">
-                <!--- Single Location Start !-->
-                <div class="col-md-8 wow fadeInUp" data-wow-delay="0s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-1.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                <!--- Single Location Start !-->
-                <div class="col-md-4 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-2.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                 <!--- Single Location Start !-->
-                <div class="col-md-4 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-3.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                <!--- Single Location Start !-->
-                <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-4.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                <!--- Single Location Start !-->
-                <div class="col-md-4 wow fadeInUp" data-wow-delay="1.4s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-5.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                 <!--- Single Location Start !-->
-                <div class="col-md-4 wow fadeInUp" data-wow-delay="1.4s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-6.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-                <!--- Single Location Start !-->
-                <div class="col-md-8 wow fadeInUp" data-wow-delay="1.6s">
-                    <div class="location-card-wrapper">
-                        <div class="location-card style-1">
-                            <div class="image-wrapper">
-                                <a href="destination-details.html" class="image-inner">
-                                    <img src="images/destination/image-1.jpg" alt="Location Image">
-                                </a>
-                                <div class="card-location">
-                                    <div class="location-inner">
-                                        <span><i class="fa-regular fa-location-dot"></i></span>   
-                                        <span class="address">Colombia</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--- Single Location End !-->
-            </div>
-        </div>
     </div>
-    <!-- Location Area End -->
 
-    <!--- Start Footer !-->
-    <footer class="footer bg-light-black">
-        <div class="footer-sec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <div class="footer-widget-logo">
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="images/logo/footer-logo.png" alt="Footer Logo"/></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 ">
-                        <div class="footer-widget footer-widget-info">
-                            <h2 class="footer-widget-title">About Travello</h2>
-                            <div class="footer-widget-contact">
-                                <p class="desc">Excepteur sint occaecat cupidatat non proi dent, sunt in culpa qui officia deserunt molli tanim id es aecat cupi dent, sunt</p>
-                                <div class="footer-contact">
-                                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-                                    <div class="contact-text"><span>Jl. Raya Ubud No.70, Ubud - Bali</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6">
-                        <div class="footer-widget-menu-wrapper">
-                            <div class="footer-widget widget_nav_menu">
-                                <h2 class="footer-widget-title">Quick links</h2>
-                                <ul class="menu">
-                                    <li>Home</li>
-                                    <li>Tour</li>
-                                    <li>Destination</li>
-                                    <li>News</li>
-                                </ul>
-                            </div>
-                            <div class="footer-widget widget_nav_menu">
-                                <h2 class="footer-widget-title">Other pages</h2>
-                                <ul class="menu">
-                                    <li>Adventure tour</li>
-                                    <li>Couple tour</li>
-                                    <li>Family tour</li>
-                                    <li>Group tour</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 ">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">Book your holiday</h2>
-                             <div class="footer-widget-contact">
-                                 <div class="footer-contact">
-                                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                                    <div class="contact-text"><a href="tel:+012-345-6789">012-345-6789</a></div>
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 ">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">Email us</h2>
-                             <div class="footer-widget-contact">
-                                 <div class="footer-contact">
-                                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                                    <div class="contact-text"><a href="mailto:info@gmail.com">info@gmail.com</a></div>
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6  d-flex  justify-content-lg-end align-items-lg-end">
-                        <div class="footer-widget">
-                            <h2 class="footer-widget-title">Follow us</h2>
-                            <div class="footer-widget-social">
-                                <div class="social-profile">
-                                    <a href="https://www.facebook.com/boomdevs/"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
-                                    <a href="https://twitter.com/boom_devs/"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="https://www.linkedin.com/company/boomdevs/"><i class="fa-brands fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div id="footer-sitemap-root" class="footer-directory-wrap footer-directory border-t border-slate-200">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <p class="mb-10 text-center text-xs text-slate-500 sm:text-left">International hotels, country hubs, guides &amp; holiday homes</p>
+          <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 xl:gap-x-8">
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Destination Cities</h3>
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Hotels</a></li>
+                <li><a href="destination.html">Bandung Hotels</a></li>
+                <li><a href="bangkok.html">Bangkok Hotels</a></li>
+                <li><a href="destination.html">Boracay Island Hotels</a></li>
+                <li><a href="destination.html">Busan Hotels</a></li>
+                <li><a href="destination.html">Cebu Hotels</a></li>
+                <li><a href="destination.html">Chiang Mai Hotels</a></li>
+                <li><a href="da-nang.html">Da Nang Hotels</a></li>
+                <li><a href="destination.html">Fukuoka Hotels</a></li>
+                <li><a href="hanoi.html">Hanoi Hotels</a></li>
+                <li><a href="destination.html">Hat Yai Hotels</a></li>
+                <li><a href="ho-chi-minh-city.html">Ho Chi Minh City Hotels</a></li>
+                <li><a href="destination.html">Hoi An Hotels</a></li>
+                <li><a href="destination.html">Hong Kong Hotels</a></li>
+                <li><a href="destination.html">Hua Hin Hotels</a></li>
+                <li><a href="destination.html">Hualien Hotels</a></li>
+                <li><a href="destination.html">Ipoh Hotels</a></li>
+                <li><a href="destination.html">Jakarta Hotels</a></li>
+                <li><a href="destination.html">Jeju Island Hotels</a></li>
+                <li><a href="destination.html">Johor Bahru Hotels</a></li>
+                <li><a href="destination.html">Kaohsiung Hotels</a></li>
+                <li><a href="destination.html">Kota Kinabalu Hotels</a></li>
+                <li><a href="krabi.html">Krabi Hotels</a></li>
+              </ul>
             </div>
-        </div>
-                <div class="footer-sitemap-bootstrap border-top border-secondary border-opacity-25 mt-4">
-            <div class="container py-4 py-lg-5">
-                <p class="text-muted small border-bottom border-secondary border-opacity-25 pb-3 mb-4">International hotels, country hubs, guides &amp; holiday homes</p>
-                <h2 class="h6 text-white mb-3">Destination Cities</h2>
-                <div class="row g-3 mb-4 pb-4 border-bottom border-secondary border-opacity-25">
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="bali.html" class="link-light text-decoration-none small">Bali Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Bandung Hotels</a></li>
-                            <li class="mb-1"><a href="bangkok.html" class="link-light text-decoration-none small">Bangkok Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Boracay Island Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Busan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Cebu Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Chiang Mai Hotels</a></li>
-                            <li class="mb-1"><a href="da-nang.html" class="link-light text-decoration-none small">Da Nang Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Fukuoka Hotels</a></li>
-                            <li class="mb-1"><a href="hanoi.html" class="link-light text-decoration-none small">Hanoi Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hat Yai Hotels</a></li>
-                            <li class="mb-1"><a href="ho-chi-minh-city.html" class="link-light text-decoration-none small">Ho Chi Minh City Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hoi An Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hong Kong Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hua Hin Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hualien Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Ipoh Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Jakarta Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Jeju Island Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Johor Bahru Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kaohsiung Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kota Kinabalu Hotels</a></li>
-                            <li class="mb-1"><a href="krabi.html" class="link-light text-decoration-none small">Krabi Hotels</a></li>
-                            <li class="mb-1"><a href="kuala-lumpur.html" class="link-light text-decoration-none small">Kuala Lumpur Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kuantan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kyoto Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Malacca Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Manila Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Nagoya Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Nha Trang Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Okinawa Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Osaka Hotels</a></li>
-                            <li class="mb-1"><a href="pattaya.html" class="link-light text-decoration-none small">Pattaya Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Penang Hotels</a></li>
-                            <li class="mb-1"><a href="phuket.html" class="link-light text-decoration-none small">Phuket Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Sapporo Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Seoul Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Shanghai Hotels</a></li>
-                            <li class="mb-1"><a href="singapore.html" class="link-light text-decoration-none small">Singapore Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Surabaya Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Taichung Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Tainan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Taipei Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Tokyo Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Yilan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Yogyakarta Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Europe</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">London Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Paris Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Middle East</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="dubai.html" class="link-light text-decoration-none small">Dubai Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-                <h2 class="h6 text-white mb-3">Countries &amp; Territories</h2>
-                <div class="row g-3 mb-4 pb-4 border-bottom border-secondary border-opacity-25">
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Africa</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Morocco Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">South Africa Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Americas</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Argentina Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Brazil Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Canada Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Mexico Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">United States Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Venezuela Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Cambodia Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">China Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">India Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Indonesia Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Japan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Laos Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Malaysia Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Myanmar Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Nepal Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Philippines Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">South Korea Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Sri Lanka Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Taiwan Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Thailand Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Vietnam Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Europe</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Austria Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Czech Republic Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Denmark Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Finland Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">France Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Germany Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Greece Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hungary Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Ireland Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Italy Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Netherlands Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Russia Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Spain Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Sweden Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Switzerland Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">United Kingdom Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Middle East</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Bahrain Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Egypt Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Israel Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">United Arab Emirates Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Oceania</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Australia Hotels</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">New Zealand Hotels</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-                <h2 class="h6 text-white mb-3">Destination Guides</h2>
-                <div class="row g-3 mb-4 pb-4 border-bottom border-secondary border-opacity-25">
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Start here</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Destination Guides Home</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="bali.html" class="link-light text-decoration-none small">Bali Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Nagasaki Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hong Kong Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Jakarta Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Jeju Island Guide</a></li>
-                            <li class="mb-1"><a href="kuala-lumpur.html" class="link-light text-decoration-none small">Kuala Lumpur Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kyoto Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Kyushu Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Malacca Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Philippines Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Nara Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Osaka Guide</a></li>
-                            <li class="mb-1"><a href="phuket.html" class="link-light text-decoration-none small">Phuket Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Sapporo Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Seoul Guide</a></li>
-                            <li class="mb-1"><a href="singapore.html" class="link-light text-decoration-none small">Singapore Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Taichung Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Taipei Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Tokyo Guide</a></li>
-                            <li class="mb-1"><a href="goa.html" class="link-light text-decoration-none small">Goa Guide</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Europe</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Paris Guide</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Middle East</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="dubai.html" class="link-light text-decoration-none small">Dubai Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Jeddah Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Saudi Arabia Guide</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Oceania</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Brisbane Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Melbourne Guide</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Sydney Guide</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                </div>
-                <h2 class="h6 text-white mb-2">Holiday homes &amp; rentals</h2>
-                <p class="text-muted small mb-3">Apartments, bungalows &amp; villas</p>
-                <div class="row g-3">
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia apartments</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="bangkok.html" class="link-light text-decoration-none small">Bangkok Apartments</a></li>
-                            <li class="mb-1"><a href="kuala-lumpur.html" class="link-light text-decoration-none small">Kuala Lumpur Apartments</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Manila Apartments</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Osaka Apartments</a></li>
-                            <li class="mb-1"><a href="pattaya.html" class="link-light text-decoration-none small">Pattaya Apartments</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Tokyo Apartments</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia bungalows</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="bali.html" class="link-light text-decoration-none small">Bali Bungalows</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Koh Kood Bungalows</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Koh Lanta Bungalows</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Koh Phangan Bungalows</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Koh Samet Bungalows</a></li>
-                            <li class="mb-1"><a href="phu-quoc-island.html" class="link-light text-decoration-none small">Phu Quoc Island Bungalows</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Asia villas</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="bali.html" class="link-light text-decoration-none small">Bali Villas</a></li>
-                            <li class="mb-1"><a href="phuket.html" class="link-light text-decoration-none small">Phuket Villas</a></li>
-                            <li class="mb-1"><a href="pattaya.html" class="link-light text-decoration-none small">Pattaya Villas</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Hua Hin / Cha-am Villas</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Seoul Villas</a></li>
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Port Dickson Villas</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-3">
-                            <div class="h-100">
-                                <h3 class="text-secondary text-uppercase small mb-2 pb-1 border-bottom border-secondary border-opacity-25">Vacation rentals</h3>
-                                <ul class="list-unstyled small mb-0" style="columns:2; column-gap:1rem;">
-                            <li class="mb-1"><a href="destination.html" class="link-light text-decoration-none small">Tokyo Vacation Rentals</a></li>
-                            <li class="mb-1"><a href="bangkok.html" class="link-light text-decoration-none small">Bangkok Vacation Rentals</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <p class="fd-region xl:mt-8">Asia</p>
+              <ul class="fd-list">
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Hotels</a></li>
+                <li><a href="destination.html">Kuantan Hotels</a></li>
+                <li><a href="destination.html">Kyoto Hotels</a></li>
+                <li><a href="destination.html">Malacca Hotels</a></li>
+                <li><a href="destination.html">Manila Hotels</a></li>
+                <li><a href="destination.html">Nagoya Hotels</a></li>
+                <li><a href="destination.html">Nha Trang Hotels</a></li>
+                <li><a href="destination.html">Okinawa Hotels</a></li>
+                <li><a href="destination.html">Osaka Hotels</a></li>
+                <li><a href="pattaya.html">Pattaya Hotels</a></li>
+                <li><a href="destination.html">Penang Hotels</a></li>
+                <li><a href="phuket.html">Phuket Hotels</a></li>
+                <li><a href="destination.html">Sapporo Hotels</a></li>
+                <li><a href="destination.html">Seoul Hotels</a></li>
+                <li><a href="destination.html">Shanghai Hotels</a></li>
+                <li><a href="singapore.html">Singapore Hotels</a></li>
+                <li><a href="destination.html">Surabaya Hotels</a></li>
+                <li><a href="destination.html">Taichung Hotels</a></li>
+                <li><a href="destination.html">Tainan Hotels</a></li>
+                <li><a href="destination.html">Taipei Hotels</a></li>
+                <li><a href="destination.html">Tokyo Hotels</a></li>
+                <li><a href="destination.html">Yilan Hotels</a></li>
+                <li><a href="destination.html">Yogyakarta Hotels</a></li>
+              </ul>
             </div>
-        </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Countries &amp; Territories</h3>
+              <p class="fd-region">Africa</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Morocco Hotels</a></li>
+                <li><a href="destination.html">South Africa Hotels</a></li>
+              </ul>
 
+              <p class="fd-region">Americas</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Argentina Hotels</a></li>
+                <li><a href="destination.html">Brazil Hotels</a></li>
+                <li><a href="destination.html">Canada Hotels</a></li>
+                <li><a href="destination.html">Mexico Hotels</a></li>
+                <li><a href="destination.html">United States Hotels</a></li>
+                <li><a href="destination.html">Venezuela Hotels</a></li>
+              </ul>
 
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Cambodia Hotels</a></li>
+                <li><a href="destination.html">China Hotels</a></li>
+                <li><a href="destination.html">India Hotels</a></li>
+                <li><a href="destination.html">Indonesia Hotels</a></li>
+                <li><a href="destination.html">Japan Hotels</a></li>
+                <li><a href="destination.html">Laos Hotels</a></li>
+                <li><a href="destination.html">Malaysia Hotels</a></li>
+                <li><a href="destination.html">Myanmar Hotels</a></li>
+                <li><a href="destination.html">Nepal Hotels</a></li>
+                <li><a href="destination.html">Philippines Hotels</a></li>
+                <li><a href="destination.html">South Korea Hotels</a></li>
+                <li><a href="destination.html">Sri Lanka Hotels</a></li>
+                <li><a href="destination.html">Taiwan Hotels</a></li>
+                <li><a href="destination.html">Thailand Hotels</a></li>
+                <li><a href="destination.html">Vietnam Hotels</a></li>
+              </ul>
 
+              <p class="fd-region">Middle East</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Bahrain Hotels</a></li>
+                <li><a href="destination.html">Egypt Hotels</a></li>
+                <li><a href="destination.html">Israel Hotels</a></li>
+                <li><a href="destination.html">United Arab Emirates Hotels</a></li>
+              </ul>
 
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-bottom-wrapper">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="copyright-text">
-                                <p>Copyright &copy; Creative Theme - Built by <a href="https://boomdevs.com/">BoomDevs</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="footer-bottom-menu">
-                                <ul>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Privacy policy</a></li>
-                                    <li><a href="#">Terms & conditions</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <p class="fd-region">Oceania</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Australia Hotels</a></li>
+                <li><a href="destination.html">New Zealand Hotels</a></li>
+              </ul>
             </div>
-        </div>
-    </footer>
-    <!--- End Footer !-->
-
-    <!-- Header Search Bar Modal Start -->
-    <div class="search-form-wrapper">
-        <div class="search-form-inner">
-            <div class="search-content-filed">
-                <form role="search" method="get" class="search-form" action="#">
-                    <input type="hidden" name="post_type" value="post" />
-                    <div class="search-form-input">
-                        <div class="search-icon">
-                            <i class="icon-search"></i>
-                        </div>
-                        <input type="search" placeholder="Search"/>
-                        <button class="theme-btn" type="submit" title="Search" aria-label="Search">Search</button>
-                    </div>
-                </form>
-                <span class="search-close">
-                    <i class="fa-light fa-xmark"></i>
-                </span>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Europe</h3>
+              <ul class="fd-list">
+                <li><a href="destination.html">Austria Hotels</a></li>
+                <li><a href="destination.html">Czech Republic Hotels</a></li>
+                <li><a href="destination.html">Denmark Hotels</a></li>
+                <li><a href="destination.html">Finland Hotels</a></li>
+                <li><a href="destination.html">France Hotels</a></li>
+                <li><a href="destination.html">Germany Hotels</a></li>
+                <li><a href="destination.html">Greece Hotels</a></li>
+                <li><a href="destination.html">Hungary Hotels</a></li>
+                <li><a href="destination.html">Ireland Hotels</a></li>
+                <li><a href="destination.html">Italy Hotels</a></li>
+                <li><a href="destination.html">Netherlands Hotels</a></li>
+                <li><a href="destination.html">Russia Hotels</a></li>
+                <li><a href="destination.html">Spain Hotels</a></li>
+                <li><a href="destination.html">Sweden Hotels</a></li>
+                <li><a href="destination.html">Switzerland Hotels</a></li>
+                <li><a href="destination.html">United Kingdom Hotels</a></li>
+              </ul>
             </div>
+            <div class="min-w-0 xl:border-r xl:border-slate-200/80 xl:pr-6">
+              <h3 class="fd-title">Destination Guides</h3>
+              <ul class="fd-list">
+                <li><a href="destination.html">Destination Guides Home</a></li>
+              </ul>
+
+              <p class="fd-region">Asia</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Guide</a></li>
+                <li><a href="destination.html">Nagasaki Guide</a></li>
+                <li><a href="destination.html">Hong Kong Guide</a></li>
+                <li><a href="destination.html">Jakarta Guide</a></li>
+                <li><a href="destination.html">Jeju Island Guide</a></li>
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Guide</a></li>
+                <li><a href="destination.html">Kyoto Guide</a></li>
+                <li><a href="destination.html">Kyushu Guide</a></li>
+                <li><a href="destination.html">Malacca Guide</a></li>
+                <li><a href="destination.html">Philippines Guide</a></li>
+                <li><a href="destination.html">Nara Guide</a></li>
+                <li><a href="destination.html">Osaka Guide</a></li>
+                <li><a href="phuket.html">Phuket Guide</a></li>
+                <li><a href="destination.html">Sapporo Guide</a></li>
+                <li><a href="destination.html">Seoul Guide</a></li>
+                <li><a href="singapore.html">Singapore Guide</a></li>
+                <li><a href="destination.html">Taichung Guide</a></li>
+                <li><a href="destination.html">Taipei Guide</a></li>
+                <li><a href="destination.html">Tokyo Guide</a></li>
+                <li><a href="goa.html">Goa Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Europe</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Paris Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Middle East</p>
+              <ul class="fd-list">
+                <li><a href="dubai.html">Dubai Guide</a></li>
+                <li><a href="destination.html">Jeddah Guide</a></li>
+                <li><a href="destination.html">Saudi Arabia Guide</a></li>
+              </ul>
+
+              <p class="fd-region">Oceania</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Brisbane Guide</a></li>
+                <li><a href="destination.html">Melbourne Guide</a></li>
+                <li><a href="destination.html">Sydney Guide</a></li>
+              </ul>
+            </div>
+            <div class="min-w-0">
+              <h3 class="fd-title">Holiday homes &amp; rentals</h3>
+              <p class="mb-3 text-xs text-slate-500">Apartments, bungalows &amp; villas</p>
+              <p class="fd-region">Asia apartments</p>
+              <ul class="fd-list">
+                <li><a href="bangkok.html">Bangkok Apartments</a></li>
+                <li><a href="kuala-lumpur.html">Kuala Lumpur Apartments</a></li>
+                <li><a href="destination.html">Manila Apartments</a></li>
+                <li><a href="destination.html">Osaka Apartments</a></li>
+                <li><a href="pattaya.html">Pattaya Apartments</a></li>
+                <li><a href="destination.html">Tokyo Apartments</a></li>
+              </ul>
+
+              <p class="fd-region">Asia bungalows</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Bungalows</a></li>
+                <li><a href="destination.html">Koh Kood Bungalows</a></li>
+                <li><a href="destination.html">Koh Lanta Bungalows</a></li>
+                <li><a href="destination.html">Koh Phangan Bungalows</a></li>
+                <li><a href="destination.html">Koh Samet Bungalows</a></li>
+                <li><a href="phu-quoc-island.html">Phu Quoc Island Bungalows</a></li>
+              </ul>
+
+              <p class="fd-region">Asia villas</p>
+              <ul class="fd-list">
+                <li><a href="bali.html">Bali Villas</a></li>
+                <li><a href="phuket.html">Phuket Villas</a></li>
+                <li><a href="pattaya.html">Pattaya Villas</a></li>
+                <li><a href="destination.html">Hua Hin / Cha-am Villas</a></li>
+                <li><a href="destination.html">Seoul Villas</a></li>
+                <li><a href="destination.html">Port Dickson Villas</a></li>
+              </ul>
+
+              <p class="fd-region">Vacation rentals</p>
+              <ul class="fd-list">
+                <li><a href="destination.html">Tokyo Vacation Rentals</a></li>
+                <li><a href="bangkok.html">Bangkok Vacation Rentals</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Header Search Bar Modal End -->
+      </div>
 
-    <!-- Scroll Up Section Start -->
-    <div id="scrollTop" class="scrollup-wrapper">
-        <div class="scrollup-btn">
-            <i class="fa-solid fa-arrow-up"></i>
+      <div class="border-t border-slate-800 bg-slate-950 text-slate-500">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 text-xs">
+          © 2005–2026 Infinity Routes Travels. All rights reserved.
         </div>
-    </div>
-    <!-- Scroll Up Section End -->
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.js"></script>
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/inview.min.js"></script>
-    <script src="js/wow.js"></script>
-    <script src="js/tilt.jquery.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/jquery.imagesloaded.min.js"></script>
-    <script src="js/select2.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/custom.js"></script>
+      </div>
+</footer>
+  <script src="js/irt-nav.js" defer></script>
 </body>
-
-<!-- Mirrored from boomdevstheme.com/tf/html/routehaven/destination.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Mar 2026 09:29:40 GMT -->
 </html>

@@ -1,0 +1,55 @@
+/* Shared with index.html — header/footer utilities for non-index pages */
+body.irt-site,
+body.irt-site * {
+  box-sizing: border-box;
+}
+body.irt-site {
+  font-family: "DM Sans", "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.footer-links a {
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-directory-wrap {
+  background: #f8fafc;
+}
+.footer-directory .fd-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.02em;
+}
+.footer-directory .fd-region {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+.footer-directory .fd-region:first-of-type {
+  margin-top: 0;
+}
+.footer-directory .fd-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-directory .fd-list li {
+  margin: 0 0 0.35rem 0;
+  padding: 0;
+}
+.footer-directory .fd-list a {
+  color: #64748b;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.footer-directory .fd-list a:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
