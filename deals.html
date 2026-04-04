@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deals & offers | Infinity Routes Travels</title>
-  <meta name="description" content="Hotel deals, flight bundles, and holiday homes—Infinity Routes promotions." />
+  <title>Today&apos;s Best Travel Deals | Infinity Routes Travels</title>
+  <meta name="description" content="Limited-time travel deals with up to 35% off. Filter by budget, destination, duration &amp; rating. Book hotels, tours &amp; packages — Infinity Routes." />
   <meta name="robots" content="index,follow" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/irt-chrome.css" />
+  <link rel="stylesheet" href="css/irt-page-hero.css" />
+  <style>
+    body { font-family: "DM Sans", "Plus Jakarta Sans", system-ui, sans-serif; }
+    .deal-card-media img { transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+    .deal-card-wrap:hover .deal-card-media img { transform: scale(1.09); }
+    .deal-btn-book { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .deal-btn-book:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(16, 185, 129, 0.35); }
+    .deal-btn-details { transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+    .deal-btn-details:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(14, 165, 233, 0.25); }
+    .deal-card-wrap.is-hidden { display: none !important; }
+    .irt-wish.is-saved { color: #f43f5e; }
+    .irt-wish.is-saved svg { fill: currentColor; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
@@ -73,11 +86,14 @@
   </header>
 
   <main>
-    <section class="border-b border-slate-200 bg-gradient-to-br from-sky-900 via-slate-900 to-slate-950 px-4 py-14 text-white sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-4xl text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-sky-200/90">Save more on every trip</p>
-        <h1 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Deals &amp; offers</h1>
-        <p class="mx-auto mt-4 max-w-2xl text-sm text-white/85 sm:text-base">Curated hotel promotions, flight &amp; activity bundles, and featured stays—hand-picked for Infinity Routes travellers.</p>
+    <section class="irt-page-hero px-4 pb-10 pt-12 text-white sm:px-6 sm:pb-12 sm:pt-16 lg:px-8" style="--irt-hero-bg: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=2200&amp;q=82');">
+      <div class="relative z-10 mx-auto max-w-7xl">
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-white/85" aria-label="Breadcrumb">
+          <a href="index.html" class="font-medium underline decoration-white/40 underline-offset-2 hover:text-white">Home</a><span aria-hidden="true">/</span><span class="font-semibold text-white">Deals &amp; offers</span>
+        </nav>
+        <p class="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-100/90">Save more · Limited-time offers</p>
+        <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-white drop-shadow sm:text-4xl md:text-5xl">Deals &amp; offers</h1>
+        <p class="mt-3 max-w-2xl text-base text-white/90 sm:text-lg">Curated hotel promotions, flight &amp; activity bundles, and featured stays—hand-picked for Infinity Routes travellers.</p>
       </div>
     </section>
     <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">

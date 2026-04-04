@@ -1,0 +1,25 @@
+/* Immersive page hero — same pattern as destination city pages (breadcrumb + label + H1 + text on photo + gradient). */
+.irt-page-hero {
+  --irt-hero-bg: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2200&q=82");
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  background-image: linear-gradient(
+      105deg,
+      rgba(15, 23, 42, 0.92) 0%,
+      rgba(15, 23, 42, 0.62) 38%,
+      rgba(2, 132, 199, 0.28) 72%,
+      rgba(15, 23, 42, 0.45) 100%
+    ),
+    var(--irt-hero-bg);
+  background-size: cover;
+  background-position: center 38%;
+}
+
+@media (min-width: 768px) {
+  .irt-page-hero {
+    min-height: 380px;
+  }
+}

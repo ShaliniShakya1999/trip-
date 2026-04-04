@@ -44,9 +44,11 @@
     <![endif]-->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/irt-chrome.css" />
+    <link rel="stylesheet" href="css/irt-page-hero.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>body.irt-site { font-family: "DM Sans", "Plus Jakarta Sans", system-ui, sans-serif; }</style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 irt-site">
@@ -71,7 +73,7 @@
         <a href="destination.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Destinations</a>
         <a href="tour.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Packages</a>
         <a href="about.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">About</a>
-        <a href="contact.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Contact</a>
+        <a href="contact.html" class="whitespace-nowrap rounded-lg px-2 py-2 text-sky-700 hover:bg-sky-50">Contact</a>
         <a href="deals.html" class="whitespace-nowrap rounded-lg px-2 py-2 text-amber-700 hover:bg-amber-50">Deals</a>
         <a href="flights.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Flights</a>
         <a href="activities.html" class="whitespace-nowrap rounded-lg px-2 py-2 hover:bg-slate-50 hover:text-sky-700">Activities</a>
@@ -95,7 +97,7 @@
         <a href="destination.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Destinations</a>
         <a href="tour.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Packages</a>
         <a href="about.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">About</a>
-        <a href="contact.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Contact</a>
+        <a href="contact.html" class="rounded-lg px-2 py-2.5 text-sky-700 hover:bg-sky-50">Contact</a>
         <a href="deals.html" class="rounded-lg px-2 py-2.5 text-amber-800 hover:bg-amber-50">Deals</a>
         <a href="flights.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Flights</a>
         <a href="activities.html" class="rounded-lg px-2 py-2.5 hover:bg-slate-50">Activities</a>
@@ -107,220 +109,162 @@
       </nav>
     </div>
   </header>
-<!-- Page Header Start !-->
-    <div class="page-breadcrumb-area page-bg" style="background-image: url('images/breadcrumb/image-1.jpg')">
-        <!-- <div class="page-overlay"></div> -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb-wrapper">
-                        <div class="page-heading">
-                            <h3 class="page-title">Contact Us</h3>
-                        </div>
-                        <div class="breadcrumb-list">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active"><a href="#">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End !-->
 
-    <!-- Contact-info Section Start !-->
-    <div class="contact-info-area">
-        <div class="container">
-            <div class="row gx-xl-5 gy-4">
-                <div class="col-xl-4 col-md-6">
-                    <div class="icon-card style-2">
-                        <div class="icon">
-                            <i class="fa-solid fa-phone-volume"></i>
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Contact number</h2>
-                            <div class="info">
-                                <a href="tel:+911800000000" class="desc">+91 1800-000-0000 (India toll-free)</a>
-                                <a href="tel:+919876543210" class="desc">+91 98765 43210</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="icon-card style-2">
-                        <div class="icon">
-                            <i class="fa-solid fa-calendar"></i>
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Mail address</h2>
-                            <div class="info">
-                                <a href="mailto:hello@infinityroutes.in" class="desc">hello@infinityroutes.in</a>
-                                <a href="mailto:support@infinityroutes.in" class="desc">support@infinityroutes.in</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="icon-card style-2">
-                        <div class="icon">
-                            <i class="fa-solid fa-message"></i>
-                        </div>
-                        <div class="content">
-                            <h2 class="title">Office address</h2>
-                            <div class="info">
-                                <span class="address-desc">Infinity Routes Travels — India operations<br>(Replace with your registered office address)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="irt-page-hero px-4 pb-10 pt-12 text-white sm:px-6 sm:pb-12 sm:pt-16 lg:px-8" style="--irt-hero-bg: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=2200&amp;q=82');">
+      <div class="relative z-10 mx-auto max-w-7xl">
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-white/85" aria-label="Breadcrumb">
+          <a href="index.html" class="font-medium underline decoration-white/40 underline-offset-2 hover:text-white">Home</a><span aria-hidden="true">/</span><span class="text-white/70">Support</span><span aria-hidden="true">/</span><span class="font-semibold text-white">Contact</span>
+        </nav>
+        <p class="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-sky-100/90">Get in touch · We&apos;re here to help</p>
+        <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-white drop-shadow sm:text-4xl md:text-5xl">Contact us</h1>
+        <p class="mt-3 max-w-2xl text-base text-white/90 sm:text-lg">Bookings, changes, refunds, or partnerships — reach us by phone, email, or the form below. We typically reply within one business day.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Mon–Sun · 9:00–21:00 IST</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Avg. reply · 1 business day</span>
         </div>
-    </div>
-    <!-- Contact-info Section End -->
+      </div>
+    </section>
 
-    <!-- Contact Form Section Start -->
-    <div class="contact-form-area">
-        <!-- Submit form Start -->
-        <div class="container">
-            <div class=" row gy-5">
-                <div class="col-lg-5 justify-content-center">
-                    <div class="video-modal-card style-1">
-                        <div class="image-wrapper">
-                            <img src="images/Contact-page/image-1.jpg" alt="Video Modal">
-                        </div>
-                        <div class="popup-video-wrapper">
-                            <div class="video-btn">
-                                <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="mfp-iframe video-play">
-                                    <i class="icon-play-button" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <!-- Comment Form Start -->
-                    <div class="comment-respond">
-                        <form id="irt-contact-form" action="#" method="post" class="comment-form">
-                            <p class="small text-muted mb-3">Submit opens your email app with a draft to <strong>support@infinityroutes.in</strong>—nothing is sent from this page until you send the message.</p>
-                            <div class="row g-4">
-                                <div class="col-xl-6">
-                                    <div class="contacts-name">
-                                        <label for="author">Full name</label>
-                                        <input name="author" id="author" type="text" placeholder="Enter your name" required autocomplete="name">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="contacts-email">
-                                        <label for="email">Email</label>
-                                        <input name="email" id="email" type="email" placeholder="Enter your email" required autocomplete="email">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="contacts-phone">
-                                        <label for="phone">Phone Number</label>
-                                        <input name="phone" id="phone" type="tel" placeholder="Phone number" autocomplete="tel">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="contacts-subject">
-                                        <label for="subject">Subject</label>
-                                        <input name="subject" id="subject" type="text" placeholder="Subject">
-                                    </div>
-                                </div>
-                                <div class="col-xl-12">
-                                    <div class="contacts-message">
-                                        <label for="comment">Your message</label>
-                                        <textarea name="comment" id="comment" cols="20" rows="5" placeholder="How can we help?" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="theme-btn" type="submit">Open email to send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Comment Form End -->
-                </div>
-            </div>
+    <div class="relative z-0 -mt-6 px-4 pb-4 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-3">
+        <a href="tel:+911800000000" class="group flex gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 transition group-hover:bg-sky-100">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Call us</p>
+            <p class="mt-1 font-semibold text-slate-900">+91 1800-000-0000</p>
+            <p class="text-sm text-slate-600">Toll-free (India)</p>
+            <p class="mt-1 text-sm font-medium text-sky-700">+91 98765 43210</p>
+          </div>
+        </a>
+        <a href="mailto:support@infinityroutes.in" class="group flex gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-100">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Email</p>
+            <p class="mt-1 break-all font-semibold text-slate-900">support@infinityroutes.in</p>
+            <p class="text-sm text-slate-600">Bookings &amp; support</p>
+            <p class="mt-1 break-all text-sm font-medium text-sky-700">hello@infinityroutes.in</p>
+          </div>
+        </a>
+        <div class="flex gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ring-1 ring-slate-100 sm:col-span-1">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Office</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-700">Infinity Routes Travels — India operations</p>
+            <p class="mt-1 text-xs text-slate-500">Replace with your registered office address.</p>
+          </div>
         </div>
-        <!-- Submit form End -->
+      </div>
     </div>
-    <!-- Contact Form Section End -->
 
-    <section id="help" class="scroll-mt-28 bg-slate-50 py-12">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Help center</h2>
-                    <p class="text-muted mb-3">Full guides: <a href="help-center.html" class="text-decoration-none fw-semibold">Help center</a> · <a href="faqs.html" class="text-decoration-none fw-semibold">FAQs</a>. For bookings, changes, and refunds, email us or use the form above—we typically respond within one business day.</p>
-                    <p class="text-muted mb-0"><a href="privacy.html" class="text-decoration-none">Privacy</a> · <a href="cookies.html" class="text-decoration-none">Cookies</a> · <a href="terms.html" class="text-decoration-none">Terms</a></p>
-                </div>
+    <section class="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
+        <div class="lg:col-span-5">
+          <div class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-900 shadow-lg ring-1 ring-slate-200/60">
+            <img src="images/Contact-page/image-1.jpg" alt="" class="h-full min-h-[260px] w-full object-cover opacity-95 sm:min-h-[320px] lg:min-h-[420px]" width="800" height="600" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" aria-hidden="true"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p class="text-xs font-bold uppercase tracking-wider text-sky-200/90">We&apos;re real people</p>
+              <p class="mt-1 text-lg font-bold leading-snug">Travel experts on your side</p>
+              <p class="mt-2 max-w-sm text-sm text-white/85">From itinerary tweaks to refunds, our team works with airlines, hotels, and partners so you don&apos;t have to chase threads alone.</p>
+              <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white underline decoration-white/40 underline-offset-2 transition hover:text-sky-200" rel="noopener noreferrer" target="_blank">Watch our story on YouTube</a>
             </div>
+          </div>
         </div>
+        <div class="lg:col-span-7">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100 sm:p-8">
+            <h2 class="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">Send a message</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Submitting opens your email app with a draft to <strong class="font-semibold text-slate-800">support@infinityroutes.in</strong>. Nothing leaves your device until you hit send.</p>
+            <div class="mt-4 rounded-xl border border-sky-100 bg-sky-50/80 px-4 py-3 text-sm text-sky-900">
+              <span class="font-semibold">Tip:</span> include your booking reference or dates so we can help faster.
+            </div>
+            <form id="irt-contact-form" action="#" method="post" class="mt-6 space-y-5">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="author" class="mb-1.5 block text-sm font-semibold text-slate-700">Full name</label>
+                  <input name="author" id="author" type="text" required autocomplete="name" placeholder="Your name" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/25" />
+                </div>
+                <div>
+                  <label for="email" class="mb-1.5 block text-sm font-semibold text-slate-700">Email</label>
+                  <input name="email" id="email" type="email" required autocomplete="email" placeholder="you@email.com" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/25" />
+                </div>
+                <div>
+                  <label for="phone" class="mb-1.5 block text-sm font-semibold text-slate-700">Phone <span class="font-normal text-slate-500">(optional)</span></label>
+                  <input name="phone" id="phone" type="tel" autocomplete="tel" placeholder="+91 …" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/25" />
+                </div>
+                <div>
+                  <label for="subject" class="mb-1.5 block text-sm font-semibold text-slate-700">Subject</label>
+                  <input name="subject" id="subject" type="text" placeholder="e.g. Booking change" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/25" />
+                </div>
+              </div>
+              <div>
+                <label for="comment" class="mb-1.5 block text-sm font-semibold text-slate-700">Message</label>
+                <textarea name="comment" id="comment" rows="5" required placeholder="How can we help?" class="w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/25"></textarea>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-sky-600/25 transition hover:from-sky-500 hover:to-indigo-500 sm:w-auto">Open email to send</button>
+                <p class="text-center text-xs text-slate-500 sm:text-left">Prefer calling? Use the numbers above — we&apos;re happy to help.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="faqs" class="scroll-mt-28 py-10 border-top border-slate-200">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">FAQs</h2>
-                    <p class="text-muted mb-2">See the full <a href="faqs.html" class="text-decoration-none fw-semibold">FAQ page</a> for search, cancellations, payments, and more.</p>
-                    <p class="text-muted mb-2"><strong>How do I change a booking?</strong> Mention your reservation details in the contact form and our team will guide you.</p>
-                    <p class="text-muted mb-0"><strong>Is payment secure?</strong> We partner with trusted providers; never share OTPs or CVV by email.</p>
-                </div>
-            </div>
+
+    <section class="border-t border-slate-200 bg-slate-100/60 px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-sky-700">More ways to connect</p>
+            <h2 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-900">Teams &amp; resources</h2>
+            <p class="mt-2 max-w-2xl text-sm text-slate-600">Jump to a topic or open a full guide — same trusted Infinity Routes experience.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <a href="privacy.html" class="font-semibold text-sky-700 hover:underline">Privacy</a>
+            <span class="text-slate-300" aria-hidden="true">·</span>
+            <a href="cookies.html" class="font-semibold text-sky-700 hover:underline">Cookies</a>
+            <span class="text-slate-300" aria-hidden="true">·</span>
+            <a href="terms.html" class="font-semibold text-sky-700 hover:underline">Terms</a>
+          </div>
         </div>
-    </section>
-    <section id="careers" class="scroll-mt-28 bg-slate-50 py-10">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Careers</h2>
-                    <p class="text-muted mb-0">We are open to roles in travel operations, content, and technology. Send your CV and a short note via the contact form (subject: Careers).</p>
-                </div>
-            </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article id="help" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Help center</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Guides for bookings, payments, and your account. For urgent changes, use the form or call us.</p>
+            <a href="help-center.html" class="mt-4 inline-flex text-sm font-bold text-sky-700 hover:underline">Open help center →</a>
+          </article>
+          <article id="faqs" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">FAQs</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600"><strong class="text-slate-800">Booking changes?</strong> Add your reference in the form. <strong class="text-slate-800">Payments?</strong> We never ask for OTP or CVV by email.</p>
+            <a href="faqs.html" class="mt-4 inline-flex text-sm font-bold text-sky-700 hover:underline">Browse all FAQs →</a>
+          </article>
+          <article id="careers" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Careers</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">We hire for travel operations, content, and technology. Send your CV via the form with subject <span class="font-semibold text-slate-800">Careers</span>.</p>
+          </article>
+          <article id="press" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Press</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Media and partnership enquiries — use the contact form with subject line <span class="font-semibold text-slate-800">Press</span>.</p>
+          </article>
+          <article id="partners" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Partner Hub</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Hotels, DMCs, and activity providers: tell us about your inventory and markets — we&apos;ll connect you with the right team.</p>
+          </article>
+          <article id="advertise" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Advertise with us</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Sponsored placements and brand campaigns — reach out with your audience and goals.</p>
+          </article>
+          <article id="affiliates" class="scroll-mt-28 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md">
+            <h3 class="font-bold text-slate-900">Affiliates</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Creators and publishers: ask about affiliate programs via the form — subject <span class="font-semibold text-slate-800">Affiliates</span>.</p>
+          </article>
         </div>
-    </section>
-    <section id="press" class="scroll-mt-28 py-10 border-top border-slate-200">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Press</h2>
-                    <p class="text-muted mb-0">Media and partnership enquiries: use the contact form with subject line “Press”.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="partners" class="scroll-mt-28 bg-slate-50 py-10">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Partner Hub</h2>
-                    <p class="text-muted mb-0">Hotels, DMCs, and activity providers: tell us about your inventory and markets—we will connect you with the right team.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="advertise" class="scroll-mt-28 py-10 border-top border-slate-200">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Advertise with us</h2>
-                    <p class="text-muted mb-0">Sponsored placements and brand campaigns: reach out with your audience and goals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="affiliates" class="scroll-mt-28 bg-slate-50 py-12">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="h3 mb-3">Affiliates</h2>
-                    <p class="text-muted mb-0">Content creators and publishers: ask about affiliate and referral programs via the contact form (subject: Affiliates).</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <footer class="mt-10"><div class="bg-slate-950 text-slate-300"><div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div class="rounded-xl border border-slate-800/60 bg-slate-900/35 p-6 sm:p-8">
